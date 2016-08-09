@@ -1,0 +1,7 @@
+RewriteEngine On
+#RewriteBase /project/panada/git/app/
+RewriteBase /mariumroh/public/
+RewriteCond %{REQUEST_FILENAME} !-l
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA]
