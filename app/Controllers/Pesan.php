@@ -97,8 +97,5 @@ class Pesan extends Resources\Controller
 		}else{
 			$this->redirect('kantor');
 		}
-		
-		
-		
     }
 }
