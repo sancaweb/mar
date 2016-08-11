@@ -2,7 +2,12 @@
 <div class="box-header with-border">
   <h3 class="box-title">Direct Chat</h3>
   <div class="box-tools pull-right">
-	<span data-toggle="tooltip" title="<?php echo $total_pesan;?> Pesan dalam percakapan ini" class="badge bg-yellow"><?php echo $total_pesan;?></span>
+  <a href="<?php echo $this->uri->baseUri;?>index.php/admin/pesan" type="button" class="btn btn-primary btn-flat btn-xs">
+	  <i class="fa fa-envelope-o" aria-hidden="true"></i>
+	  &nbsp;View Inbox</a>
+	  <a href="<?php echo $this->uri->baseUri;?>index.php/admin/pesan/sentitems" type="button" class="btn btn-primary btn-flat btn-xs">
+	  <i class="fa fa-share" aria-hidden="true"></i> &nbsp;View Sentitems</a>
+	<span data-toggle="tooltip" title="<?php echo $total_pesan;?> Pesan dalam percakapan ini" class="badge bg-yellow"><?php echo $total_pesan;?>&nbsp;<i class="fa fa-envelope-o"></i></span>	  
 	<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 	<button class="btn btn-box-tool" data-toggle="tooltip" title="<?php echo $total_pesan_belum_terbaca;?> Pesan belum dibaca" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
 	<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>

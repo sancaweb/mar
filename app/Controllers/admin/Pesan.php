@@ -106,11 +106,17 @@ class Pesan extends Resources\Controller
 		if($cek_id_pesan AND $cek_id){
 			$id=base64_decode($id);
 			$id_pesan=base64_decode($id_pesan);
-			//edit status pesan (sudah terbaca)
-			$data_pesan=array(
-				'status'=>1,
-			);
-			$this->pesan->edit_pesan($data_pesan,$id);
+			$view_pengirim=$this->pesan->view_pengirim($id);
+			if($view_pengirim->pengirim == $this->session->getValue('user_id')){
+				
+			}else{
+				//edit status pesan (sudah terbaca)
+				$data_pesan=array(
+					'status'=>1,
+				);
+				$this->pesan->edit_pesan($data_pesan,$id);
+			}
+			
 			
 			$datapengguna=$this->user->view_nama_email($this->session->getValue('user_id'));
 			$user_level=$this->user->ambil_user_level($this->session->getValue('user_level'))->ket;
@@ -226,8 +232,6 @@ class Pesan extends Resources\Controller
 			$subjek=$this->request->post('subjek');
 			$isi_pesan=$this->request->post('isi_pesan');
 			$id_pesan='#'.$this->randomstring->randomstring(4).'-'.base64_encode(date('Ymd'));
-			
-						
 			
 			$data_pesan=array(
 				'id_pesan'=>$id_pesan,

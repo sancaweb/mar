@@ -62,6 +62,10 @@ class Pesan {
 	public function view_by_id($id){
 		return $this->db->row("SELECT * FROM pesan WHERE id='".$id."'");
 	}
+	
+	public function view_pengirim($id){
+		return $this->db->row("SELECT pengirim FROM pesan WHERE id='".$id."'");
+	}
 		
 	public function view_by_id_pesan($id_pesan){
 		return $this->db->results("SELECT * FROM pesan WHERE id_pesan='".$id_pesan."' ORDER by id DESC");
