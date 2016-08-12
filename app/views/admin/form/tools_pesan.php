@@ -27,7 +27,7 @@
 			<div class="row" style="border-bottom:2px solid #B8B8B8; border-top:2px solid #B8B8B8; margin-bottom:10px;border-bottom-right-radius: 15em 1em; border-bottom-left-radius: 1em 3em;border-top-left-radius: 1em 3em; border-top-right-radius: 1em 3em;">
 			
 			
-			<div class="col-md-6 ">					
+			<div class="col-md-6 ">				
 			<div class="form-group">
 			  <label>Penerima</label>
 			  <div class="input-group col-xs-12">
