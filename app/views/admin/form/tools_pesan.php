@@ -10,11 +10,69 @@
 		<a class="btn btn-app btn-flat disabled" href="#">
 		<i class="fa fa-file-text"></i> View All data
 		</a>		
-		<a data-toggle="modal" data-target="#myModalInput" class="btn btn-app btn-flat" href="<?php echo $this->uri->baseUri;?>index.php/admin/voucher/penerima_voucher">
-		<i class="fa fa-pencil-square-o"></i> Tulis Pesan
+		<a data-toggle="modal" data-target="#myModalInput" class="btn btn-app btn-flat" >
+		<i class="fa fa-pencil-square-o"></i> Pesan Baru
 		</a>
 		</div>
-
+<!-- Modal Pesan Baru-->
+<div class="modal fade" id="myModalInput" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog " role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<h4 class="modal-title" id="myModalLabel">Kirim Pesan Baru</h4>
+	  </div>
+	  <div class="modal-body">
+		  <form id="form_kabar" data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/admin/kabar/pro_input_kabar">
+			<div class="row" style="border-bottom:2px solid #B8B8B8; border-top:2px solid #B8B8B8; margin-bottom:10px;border-bottom-right-radius: 15em 1em; border-bottom-left-radius: 1em 3em;border-top-left-radius: 1em 3em; border-top-right-radius: 1em 3em;">
+			
+			
+			<div class="col-md-6 ">					
+			<div class="form-group">
+			  <label>Penerima</label>
+			  <div class="input-group col-xs-12">
+			  <select class="form-control" name="kategori" required>
+			  <option value=''>tidak ada data. Input Kategori dulu</option>
+			  <option value=''>tidak ada data. Input Kategori dulu</option>
+			  <option value=''>tidak ada data. Input Kategori dulu</option>
+			  </select>
+			</div>
+			  </div><!-- /.input group -->
+			</div>
+			
+			<div class="col-md-6">					
+			<div class="form-group">
+			  <label>Penerima:</label>
+			  <div class="input-group col-xs-12">
+			  <input name="judul" type="text" class="form-control" value="" required>
+			  </div>
+			</div>				  
+			</div>
+			
+			
+			<div class="col-md-12 ">					
+			<div class="form-group">
+			  <label>Keterangan:</label>
+			  <div class="input-group col-xs-12" >
+			  <textarea id="mytextarea" name="keterangan" class="form-control" rows="3" > </textarea>
+			  </div><!-- /.input group -->
+			</div>					
+			</div>
+				
+			</div>
+			
+			
+		  <div class="modal-footer">
+			<input type="submit" class="btn btn btn-primary" value="Submit">
+			<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+		  </div>
+			
+			</form>
+	  </div>
+	</div>
+  </div>
+</div>
+<!-- END Modal Pesan Baru -->
 
 <!-- Modal Search-->
 <div class="modal fade" id="myModalSearch" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -105,41 +163,4 @@
 </div>
 <!-- END Modal Excel -->
 
-<!-- MODAL INPUT -->
-<div class="modal fade bs-example-modal-lg" id="myModalinput" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document">
-	<div class="modal-content">
-	  <div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<h4 class="modal-title" id="myModalLabel">Input Data Slide</h4>
-	  </div>
-	  <div class="modal-body">
-		<form data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/admin/pengaturan/input_header">
-		
-		<div class="row" style="border-bottom:2px solid #B8B8B8; border-top:2px solid #B8B8B8; margin-bottom:10px;border-bottom-right-radius: 15em 1em; border-bottom-left-radius: 1em 3em;border-top-left-radius: 1em 3em; border-top-right-radius: 1em 3em;">
-			
-			<input type="hidden" name="oke" >
-			<div class="col-md-6">					
-			<div class="form-group">
-			  <label>Gambar:</label>
-			  <div class="input-group col-xs-12" >
-			  <input name="image" type="file" required >
-				<p class="help-block"> Ukuran yang dianjurkan 1280x400 Pixel (maximal 5MB)</p>
-			  </div>
-			</div>				  
-			</div>
-		
-		</div>
-		
-	  <div class="modal-footer">
-		<input type="submit" class="btn btn btn-primary" value="Submit">
-		<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-	  </div>
-		
-		</form>
-		
-	  </div>
-	</div>
-  </div>
-</div>
-<!-- END Modal INPUT -->
+
