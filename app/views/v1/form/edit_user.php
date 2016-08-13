@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-xs-12 table-responsive">
 <!--FORM Edit-->
 <form data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/user/edit_user">
 <div class="row" style="border-bottom:2px solid #B8B8B8; border-top:2px solid #B8B8B8; margin-bottom:10px;border-bottom-right-radius: 15em 1em; border-bottom-left-radius: 1em 3em;border-top-left-radius: 1em 3em; border-top-right-radius: 1em 3em;">
@@ -75,4 +77,6 @@
 <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-close"></i> Cancel</button>
 </div>
 </form>
+</div>
+</div>
 <!-- end form EDIT-->

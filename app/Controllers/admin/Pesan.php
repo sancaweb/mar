@@ -11,8 +11,10 @@ class Pesan extends Resources\Controller
 		$this->user = new Models\User;
 		$this->kabar = new Models\Kabar;
 		$this->pesan = new Models\Pesan;
+		$this->rekanan = new Models\Rekanan;
 		$this->readmore = new Libraries\Readmore;
 		$this->request = new Resources\Request;
+		$this->randomstring = new Libraries\Randomstring;
 		
     }
 	
@@ -29,7 +31,6 @@ class Pesan extends Resources\Controller
 	
 		$total_pesan=$this->pesan->hitung_pesan_by_kepada($kepada);
 		
-		
 		$data['total_pesan'] = $total_pesan;
 		$data['pageLinks'] = $this->pagination->setOption(
 		array(
@@ -43,12 +44,13 @@ class Pesan extends Resources\Controller
 		$data['no'] = ($page * $this->pagination->limit) - $this->pagination->limit;
 		// end pagination
 		
-		$data['title'] = 'Data Pesan';
+		$data['title'] = 'Data Pesan Inbox';
 		$data['subtitle']= 'List data Pesan';
 		$data['konten']='admin/konten/pesan';
 		$kepada=$this->session->getValue('user_id');
 		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
 		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$data['data_user_grup']=$this->user->viewall_level_and_ket();
 		$data['menu']='pesan';
 		$data['page']='inbox';
 		
@@ -57,6 +59,7 @@ class Pesan extends Resources\Controller
 			$this->redirect('login');
 		}
 	}
+	
 	public function sentitems($page=1){
 		if($this->session->getValue('user_level')==1 || $this->session->getValue('user_level')==2 || $this->session->getValue('user_level')==3){
 		
@@ -84,7 +87,7 @@ class Pesan extends Resources\Controller
 		$data['no'] = ($page * $this->pagination->limit) - $this->pagination->limit;
 		// end pagination
 		
-		$data['title'] = 'Data Pesan';
+		$data['title'] = 'Data Pesan Terkirim';
 		$data['subtitle']= 'List data Pesan';
 		$data['konten']='admin/konten/pesan';
 		$kepada=$this->session->getValue('user_id');
@@ -92,6 +95,7 @@ class Pesan extends Resources\Controller
 		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
 		$data['menu']='pesan';
 		$data['page']='sentitems';
+		$data['data_user_grup']=$this->user->viewall_level_and_ket();
 		
         $this->output('admin/index', $data);
 		}else{
@@ -223,9 +227,9 @@ class Pesan extends Resources\Controller
 	
 	public function kirim_pesan()
     {
-		$page=1;
+		if($this->session->getValue('user_level')==1 || $this->session->getValue('user_level')==2 || $this->session->getValue('user_level')==3){
         if($_POST){
-			$kepada=$this->request->post('kepada');	
+			$kepada=$this->request->post('kepada');			
 			$nama=$this->request->post('nama');	
 			$pengirim=$this->request->post('pengirim');	
 			$email=$this->request->post('email');
@@ -233,7 +237,8 @@ class Pesan extends Resources\Controller
 			$isi_pesan=$this->request->post('isi_pesan');
 			$id_pesan='#'.$this->randomstring->randomstring(4).'-'.base64_encode(date('Ymd'));
 			
-			$data_pesan=array(
+			foreach($kepada as $kepada){
+				$data_pesan=array(
 				'id_pesan'=>$id_pesan,
 				'pengirim'=>$pengirim,
 				'kepada'=>$kepada,
@@ -244,6 +249,8 @@ class Pesan extends Resources\Controller
 				'tgl_input'=>date('Y-m-d'),				
 			);
 			$this->pesan->input_pesan($data_pesan);
+			}
+			
 			
 			$data['alert']='
 			<div class="alert alert-success alert-dismissable">
@@ -252,33 +259,24 @@ class Pesan extends Resources\Controller
 				<p>Terimakasih, Pesan anda telah terkirim. </p>
 			</div>
 			';
-			$data['title'] = 'Our Office';
-			$data['subtitle']= 'Halaman utama';
-			$data['page']='contact';
-			$data['konten']='konten/contact';
-			$data['menu']='profile';
-			//wajib
-			$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();
-			$data['menu_kategori_haji']=$this->produk->viewall_produk_haji();			
-			$data['kategori_kabar']=$this->kabar->viewall_kategori();
-			$data['img_header']=$this->pengaturan->viewall_header_rand();		
-			$data['list_partner']=$this->pengaturan->viewall_partner();
-			//end wajib
-			
 			//pagination
 			$this->pagination = new Resources\Pagination();
+			$page=1;
 			$page = (int) $page;
-			$limit = 5;
-			$total_kantor=$this->kantor->hitung_kantor();
+			$limit = 10;
 			
-					
-			$data['viewall_kantor_page']=$this->kantor->viewall_kantor_page($page, $limit);
-			$data['total_kantor'] = $total_kantor;
+			$pengirim=$this->session->getValue('user_id');
+			$data['data_sentitems']=$this->pesan->viewall_pesan_page_by_pengirim($page, $limit,$pengirim);
+		
+			$total_pesan_sentitems=$this->pesan->hitung_pesan_by_pengirim($pengirim);
+			
+			
+			$data['total_pesan_sentitems'] = $total_pesan_sentitems;
 			$data['pageLinks'] = $this->pagination->setOption(
 			array(
 				'limit' => $limit,
-				'base' => $this->uri->baseUri.'index.php/kantor/index/%#%/',
-				'total' => $total_kantor,	
+				'base' => $this->uri->baseUri.'index.php/admin/pesan/sentitems/%#%/',
+				'total' => $total_pesan_sentitems,	
 				'current' => $page,
 				)
 						)->getUrl(); 
@@ -286,9 +284,23 @@ class Pesan extends Resources\Controller
 			$data['no'] = ($page * $this->pagination->limit) - $this->pagination->limit;
 			// end pagination
 			
-			$this->output(TEMPLATE.'index', $data);
+			$data['title'] = 'Data Pesan Terkirim';
+			$data['subtitle']= 'List data Pesan';
+			$data['konten']='admin/konten/pesan';
+			$kepada=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$data['menu']='pesan';
+			$data['page']='sentitems';
+			$data['data_user_grup']=$this->user->viewall_level_and_ket();
+			
+			$this->output('admin/index', $data);
 		}else{
-			$this->redirect('kantor');
+			$this->redirect('index.php/admin/pesan');
+		}
+		
+		}else{
+			$this->redirect('login');
 		}
     }
 	

@@ -147,6 +147,19 @@
 			<?php
 		}
 		
+		if($page=='inbox' || $page=='sentitems' || $page=='pesan' || $page=='pesan'){
+			?>
+			<script src="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/js/chosen.jquery.min.js" type="text/javascript"></script>
+			  <script src="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/js/prism.js" type="text/javascript" charset="utf-8"></script>
+			  <script type="text/javascript">
+			  $("#dropdown-ajax").chosen({
+				no_results_text: "Oops, nothing found!",
+				width: "100%"
+			  });
+			  </script>
+			<?php
+		}
+		
 		
 		} //END if $page
 	?>
@@ -157,9 +170,7 @@
 			}
 		});
 	  </script>
-	  <?php
-		
-	  ?>
+	  
 	  
   </body>
 </html>

@@ -60,9 +60,6 @@ class User {
 	public function cek_user_level($username,$password){
 		return $this->db->row("SELECT user_level FROM user WHERE username='".$username."' AND password='".$password."'");
 	}
-	public function ambil_user_level($cek_user_level){
-		return $this->db->row("SELECT level,ket FROM user_grup WHERE level='".$cek_user_level."' ");
-	}
 	
 	public function cek_user_level_by_userid($user_id){
 		return $this->db->row("SELECT user_level FROM user WHERE id='".$user_id."'");
@@ -74,6 +71,20 @@ class User {
 	
 	public function ambil_username($id){
 		return $this->db->row("SELECT username FROM user WHERE id='".$id."'");
+	}
+	
+	public function viewall_username_and_id($user_level){
+		return $this->db->results("SELECT username,id FROM user WHERE user_level='".$user_level."' ORDER BY id DESC");
+	}
+	
+	//user grup
+	
+	public function viewall_level_and_ket(){
+		return $this->db->results("SELECT level,ket FROM user_grup");
+	}
+	
+	public function ambil_user_level($cek_user_level){
+		return $this->db->row("SELECT level,ket FROM user_grup WHERE level='".$cek_user_level."' ");
 	}
 		
 	public function viewall_user_grup(){
@@ -91,11 +102,19 @@ class User {
 		return $this->db->row("SELECT nama_lengkap,email FROM pengguna WHERE user_id='".$user_id."'");
 	}
 	
+	public function view_email($user_id){
+		return $this->db->row("SELECT email FROM pengguna WHERE user_id='".$user_id."'");
+	}
+	
 	public function viewall_pengguna_by_user_id($user_id){
 		return $this->db->row("SELECT * FROM pengguna WHERE user_id='".$user_id."'");
 	}
 	public function view_nama_lengkap($user_id){
 		return $this->db->row("SELECT nama_lengkap FROM pengguna WHERE user_id='".$user_id."'");
+	}
+	
+	public function viewall_nama_lengkap($user_id){
+		return $this->db->results("SELECT nama_lengkap FROM pengguna WHERE user_id='".$user_id."'");
 	}
 	
 	public function input_pengguna($data_pengguna){

@@ -63,15 +63,13 @@
 								<?php if(isset($data_pengguna)){
 									$nama=$data_pengguna->nama_lengkap;
 									$email=$data_pengguna->email;
-									$pengirim=$this->session->getValue('user_id');
 								}else{
 									$nama='';
 									$email='';
-									$pengirim='';
 								}
 								?>
 								
-								<input name="pengirim" type="hidden" id="name" value="<?php echo $pengirim;?>" readonly>
+								<input name="pengirim" type="hidden" id="name" value="<?php echo $this->session->getValue('user_id');?>" readonly>
 								<p>
                                     <input name="nama" type="text" id="name" placeholder="Your Name" value="<?php echo $nama;?>" required>
                                     

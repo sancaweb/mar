@@ -11,6 +11,7 @@ class User extends Resources\Controller
 		$this->upload = new Resources\Upload;
 		$this->home = new Models\Home;
 		$this->produk = new Models\Produk;
+		$this->pesan = new Models\Pesan;
 		$this->kabar = new Models\Kabar;
 		$this->image = new Libraries\Image;
 		$this->voucher = new Models\Voucher;
@@ -28,6 +29,8 @@ class User extends Resources\Controller
 			$data['subtitle']= 'User Profile';
 			$data["page"]='user';
 			$data['konten']='konten/user';
+			$kepada=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
 			$data['menu']='user';
 			//user_tab
 			$user_id=$this->session->getValue('user_id');			
@@ -188,6 +191,8 @@ class User extends Resources\Controller
 			$data['subtitle']= 'User Profile';
 			$data["page"]='user';
 			$data['konten']='konten/user';
+			$kepada=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
 			$data['menu']='user';
 			//user_tab
 			$user_id=$this->session->getValue('user_id');

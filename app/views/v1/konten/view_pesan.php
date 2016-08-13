@@ -2,20 +2,16 @@
 <div class="box-header with-border">
   <h3 class="box-title">Direct Chat</h3>
   <div class="box-tools pull-right">
-	<a class="btn btn-danger btn-xs" href="<?php echo $this->uri->baseUri;?>index.php/admin/pesan/view_pesan/<?php echo base64_encode($id_pesan).'/'.base64_encode($data_balas_pesan->id);?>">
-		<i class="fa fa-refresh" aria-hidden="true"></i> &nbsp; Reload Message	 
-	</a>
-  <a href="<?php echo $this->uri->baseUri;?>index.php/admin/pesan" type="button" class="btn btn-primary btn-flat btn-xs">
-	  <i class="fa fa-envelope-o" aria-hidden="true"></i>
-	  &nbsp;View Inbox</a>
-	  <a href="<?php echo $this->uri->baseUri;?>index.php/admin/pesan/sentitems" type="button" class="btn btn-primary btn-flat btn-xs">
-	  <i class="fa fa-share" aria-hidden="true"></i> &nbsp;View Sentitems</a>
-	<span data-toggle="tooltip" title="<?php echo $total_pesan;?> Pesan dalam percakapan ini" class="badge bg-yellow"><?php echo $total_pesan;?>&nbsp;<i class="fa fa-envelope-o"></i></span>	  
-	<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-	<button class="btn btn-box-tool" data-toggle="tooltip" title="<?php echo $total_pesan_belum_terbaca;?> Pesan belum dibaca" data-widget="chat-pane-toggle"><i class="fa fa-comments"></i></button>
-	<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+  
+	<span data-toggle="tooltip" title="<?php echo $total_pesan;?> Pesan dalam percakapan ini" class="badge bg-yellow">
+	<?php echo $total_pesan;?>&nbsp;<i class="fa fa-envelope-o"></i> &nbsp; Pesan dalam percakapan ini
+	</span>		
+	<a class="btn btn-danger btn-xs" href="<?php echo $this->uri->baseUri;?>index.php/pesan/view_pesan/<?php echo base64_encode($id_pesan).'/'.base64_encode($data_balas_pesan->id);?>">
 	
- </div>
+	<i class="fa fa-refresh" aria-hidden="true"></i> &nbsp; Reload Message	 
+	</a>
+	
+	</div>
 </div><!-- /.box-header -->
 <div class="box-body">
   <!-- Conversations are loaded here -->
@@ -93,65 +89,9 @@
 
 	</div>
 
-	
-  <!-- Contacts are loaded here -->
-  <div class="direct-chat-contacts">
-	<ul class="contacts-list">
-	<?php if($loader_pesan){
-		foreach($loader_pesan as $loader_pesan){
-			
-					$cek_pengguna=$this->user->cek_pengguna_by_userid($loader_pesan->pengirim);
-					if($cek_pengguna){
-						$foto=$this->user->view_foto($loader_pesan->pengirim);
-						
-						$cek_user_level_by_userid=$this->user->cek_user_level_by_userid($loader_pesan->pengirim)->user_level;
-						$user_level=$this->user->ambil_user_level($cek_user_level_by_userid)->ket;
-						if($foto->foto==''){
-							$foto='blank.png';
-						}else{
-							$foto=$foto->foto;
-						}
-					}else{
-						$foto='blank.png';
-						$user_level='Guest';
-					}
-			?>
-			<li>
-				<a href="<?php echo $this->uri->baseUri;?>index.php/admin/pesan/view_pesan/<?php echo base64_encode($loader_pesan->id_pesan).'/'.base64_encode($loader_pesan->id);?>">
-				  <img class="contacts-list-img" src="<?php echo $this->uri->baseUri;?>upload/user/<?php echo $foto;?>">
-				  <div class="contacts-list-info">
-					<span class="contacts-list-name">
-					  <?php echo $loader_pesan->nama;?>
-					  <small class="contacts-list-date pull-right"><?php echo date('d-M-Y',strtotime($loader_pesan->tgl_input));?></small>
-					</span>
-					<span class="contacts-list-msg"><?php echo $this->readmore->readmore($loader_pesan->isi_pesan,20);?> ...</span>
-				  </div><!-- /.contacts-list-info -->
-				</a>
-			  </li><!-- End Contact Item -->
-			<?php
-		}
-	}else{
-		?>
-		<li>
-			<a href="#">
-			  <img class="contacts-list-img" src="<?php echo $this->uri->baseUri;?>upload/user/blank.png">
-			  <div class="contacts-list-info">
-				<span class="contacts-list-name">
-				  Tidak ada pesan baru yang belum dijawab...
-				</span>
-			  </div><!-- /.contacts-list-info -->
-			</a>
-		  </li><!-- End Contact Item -->
-		<?php
-	}
-		
-	?>
-	  
-	</ul><!-- /.contatcts-list -->
-  </div><!-- /.direct-chat-pane -->
 </div><!-- /.box-body -->
 <div class="box-footer">
-  <form id="form_penerima_voucher" data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/admin/pesan/balas_pesan">
+  <form id="form_penerima_voucher" data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/pesan/balas_pesan">
 	<input name="id_pesan" class="form-control" value="<?php echo $id_pesan;?>" type="hidden">
 	<input name="pengirim" class="form-control" value="<?php echo $this->session->getValue('user_id');?>" type="hidden">
 	<input name="kepada" class="form-control" value="<?php echo $data_balas_pesan->pengirim;?>" type="hidden">

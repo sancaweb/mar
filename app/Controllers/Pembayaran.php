@@ -12,6 +12,7 @@ class Pembayaran extends Resources\Controller
 		$this->home = new Models\Home;
 		$this->produk = new Models\Produk;
 		$this->kabar = new Models\Kabar;
+		$this->pesan = new Models\Pesan;
 		$this->image = new Libraries\Image;		
 		$this->readmore = new Libraries\Readmore;
 		$this->registrasi = new Models\registrasi;
@@ -51,6 +52,8 @@ class Pembayaran extends Resources\Controller
 		$data['subtitle']= 'Halaman utama';
 		$data["page"]='pembayaran';
 		$data['konten']='konten/user';
+		$kepada=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
 		$data['menu']='pembayaran';	
 		//wajib
 		$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();

@@ -15,7 +15,7 @@
     <!-- jvectormap -->
     <link rel="stylesheet" href="<?php echo $this->uri->baseUri.ADM_STYLE;?>plugins/jvectormap/jquery-jvectormap-1.2.2.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/css/AdminLTE.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/css/skins/_all-skins.min.css">
@@ -25,7 +25,16 @@
     
 	<!-- lightbox -->
     <link href="<?php echo $this->uri->baseUri.ADM_STYLE;?>lightbox/css/lightbox.min.css" rel="stylesheet"/>
-    
+    <?php
+	if($page=='inbox' || $page=='sentitems' || $page=='pesan' || $page=='pesan'){
+		?>
+		
+	<!-- dropdown ajax -->	
+  <link rel="stylesheet" href="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/css/chosen.min.css">
+		<?php
+	}
+	?>
+	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

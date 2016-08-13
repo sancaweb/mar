@@ -1,80 +1,64 @@
 <div class="middle-content">
+<div class="container">
+
+<ul class="nav nav-pills">
+  <li role="presentation" <?php if(isset($page)){if($page=='user'){echo 'class="active"';}}?>>
+	<a href="<?php echo $this->uri->baseUri;?>index.php/user">Profile</a>
+  </li>
+  <li role="presentation" <?php if(isset($page)){if($page=='registrasi'){echo 'class="active"';}}?>>
+	<a href="<?php echo $this->uri->baseUri;?>index.php/registrasi">Data Registrasi</a>
+  </li>
+  <li role="presentation" <?php if(isset($page)){if($page=='pembayaran'){echo 'class="active"';}}?>>
+	<a href="<?php echo $this->uri->baseUri;?>index.php/pembayaran">Data Pembayaran</a>
+  </li>
+  <li role="presentation" class="dropdown <?php if(isset($page)){if($page=='inbox' || $page=='sentitems' || $page=='view_pesan'){echo 'active';}}?>">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+      Pesan <span data-toggle="tooltip" title="<?php echo $total_pesan_belum_terbaca;?> Pesan Belum dibaca" class="badge"><?php echo $total_pesan_belum_terbaca;?>&nbsp;<i class="fa fa-envelope-o"></i></span><span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu ">
+      <li role="presentation" <?php if(isset($page)){if($page=='inbox'){echo 'class="active"';}}?>>
+		<a href="<?php echo $this->uri->baseUri;?>index.php/pesan">Inbox
+		
+		</a>
+		  
+	  </li>
+      <li role="presentation" <?php if(isset($page)){if($page=='sentitems'){echo 'class="active"';}}?>>
+		<a href="<?php echo $this->uri->baseUri;?>index.php/pesan/sentitems">Sent items
+		
+		</a>
+		  
+	  </li>
+    </ul>
+  </li>
+</ul>
+
+</div>
+</div>
+
+<div class="middle-content">
 	<div class="container">
 	<?php if(isset($alert)){
 		echo $alert;
 	}?>
-
-	<div class="row"><!-- first row -->
-			
-		<div class="col-md-3"><!-- first column -->
+	
 		
-			<div class="widget-item">
-			
-				<h3 class="widget-title">Your Profile</h3>
-				<a href="<?php echo $this->uri->baseUri;?>index.php/user">
-				<div class="service-item">
-					<div class="service-icon">
-						<i class="fa fa-user"></i>
-					</div> <!-- /.service-icon -->
-				  <div class="service-content">					  
-					<h4>Profile</h4>
-					</div> 
-					<!-- /.service-content -->
-				</div> <!-- /.service-item -->
-				</a>
-				
-				<a href="<?php echo $this->uri->baseUri;?>index.php/registrasi">
-				<div class="service-item">
-					<div class="service-icon">
-						<i class="fa fa-users"></i>
-					</div> <!-- /.service-icon -->
-				  <div class="service-content">					  
-					<h4>Data Registrasi</h4>
-					</div> 
-					<!-- /.service-content -->
-				</div> <!-- /.service-item -->
-				</a>
-				
-				<a href="<?php echo $this->uri->baseUri;?>index.php/pembayaran">
-				<div class="service-item">
-					<div class="service-icon">
-						<i class="fa fa-money"></i>
-					</div> <!-- /.service-icon -->
-				  <div class="service-content">					  
-					<h4>Data Pembayaran</h4>
-					</div> 
-					<!-- /.service-content -->
-				</div> <!-- /.service-item -->
-				</a>
-				
-				
-				
-				
-			</div> <!-- /.widget-item -->
-			
-		</div> <!-- /.col-md-4 -->
-		
-		<div class="col-md-9"><!-- second column -->
-			<div class="widget-item">
-				<h3 class="widget-title"><?php echo $title;?></h3>
-				<?php if(isset($page)){
-					if($page=='user'){
-						$this->output(TEMPLATE.'form/edit_user');
-					}
-					if($page=='registrasi'){
-						$this->output(TEMPLATE.'konten/registrasi');
-					}
-					if($page=='pembayaran'){
-						$this->output(TEMPLATE.'konten/pembayaran');
-					}
-				}?>
-			</div> <!-- /.widget-item -->
-		</div> <!-- /.col-md-4 -->
-		
-		
-		
-		
-	</div> <!-- /.row first -->
+	<?php if(isset($page)){
+		if($page=='user'){
+			$this->output(TEMPLATE.'form/edit_user');
+		}
+		if($page=='registrasi'){
+			$this->output(TEMPLATE.'konten/registrasi');
+		}
+		if($page=='pembayaran'){
+			$this->output(TEMPLATE.'konten/pembayaran');
+		}
+		if($page=='inbox' || $page=='sentitems'){
+			$this->output(TEMPLATE.'konten/pesan');
+		}
+		if($page=='view_pesan'){
+			$this->output(TEMPLATE.'konten/view_pesan');
+		}
+	}?>
 		
 		
 		

@@ -9,7 +9,10 @@ class Rekanan {
     public function __construct() {
         $this->db = new Resources\Database();
 		
-    }    
+    }
+	public function viewall_nama_and_user_id(){
+		return $this->db->results("SELECT nama_rekanan,user_id FROM rekanan order by nama_rekanan ASC");
+	}
 	
 	public function input_rekanan($data_rekanan){
         return $this->db->insert('rekanan',$data_rekanan);
