@@ -114,7 +114,7 @@
 							<?php
 							if($this->session->getValue('username')){
 								?>
-								<li class="dropdown <?php if($menu=='pembayaran' || $menu=='registrasi'){echo 'active';}?>">
+								<li class="dropdown <?php if($menu=='pembayaran' || $menu=='registrasi' || $menu=='user' || $menu=='pesan' ){echo 'active';}?>">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-folder-open"></i>&nbsp;Member Area
 								<b class="caret hidden-phone"></b>
 								</a>

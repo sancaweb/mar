@@ -115,7 +115,7 @@
 			<?php
 		}
 		
-		if($page=='penerima_voucher'){
+		if($page=='penerima_voucher' || $page=='inbox' || $page=='sentitems'){
 			?>
 			<!-- date-range-picker -->
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>

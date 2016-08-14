@@ -26,7 +26,7 @@
 	<!-- lightbox -->
     <link href="<?php echo $this->uri->baseUri.ADM_STYLE;?>lightbox/css/lightbox.min.css" rel="stylesheet"/>
     <?php
-	if($page=='inbox' || $page=='sentitems' || $page=='pesan' || $page=='pesan'){
+	if($page=='inbox' || $page=='sentitems' || $page=='pesan'){
 		?>
 		
 	<!-- dropdown ajax -->	
@@ -81,7 +81,7 @@
 			<?php
 		}
 		
-		if($page=='penerima_voucher'){
+		if($page=='penerima_voucher' || $page=='inbox' || $page=='sentitems'){
 			?>
 			<!-- daterange picker -->
 			<link rel="stylesheet" href="<?php echo $this->uri->baseUri.ADM_STYLE;?>/plugins/daterangepicker/daterangepicker-bs3.css">

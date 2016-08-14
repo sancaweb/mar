@@ -54,22 +54,57 @@
                             <form name="contactform" data-toggle="validator" enctype="multipart/form-data" role="form" id="contactform" action="<?php echo $this->uri->baseUri;?>index.php/pesan/kirim_pesan" method="post">
                                 
 								<p>
-                                    <select name="kepada" required>
-										<option value=''>Kirim Pesan Ke</option>
-										<option value="2">Admin</option>
-										<option value="1">Web Developer Team</option>
-									</select>									
+                                    <select data-placeholder="Penerima Pesan (bisa lebih dari satu)." style="width:350px;" multiple id="dropdown-ajax" class="form-control chosen-select" name="penerima[]" required>
+					
+									<?php foreach($data_user_grup as $data_user_grup){						
+										?>
+										<optgroup class="optionGroup" label="User Level : <?php echo $data_user_grup->ket;?>">
+										<?php $user_level=$data_user_grup->level;
+											$data_user=$this->user->viewall_username_and_id($user_level);
+											if($data_user){
+												foreach($data_user as $data_user){				
+													$user_id=$data_user->id;
+													$username=$data_user->username;
+													$data_pengguna=$this->user->view_nama_lengkap($user_id);
+													if($this->session->getValue('user_id') == $user_id){
+														
+													}else{
+														
+														if($data_pengguna->nama_lengkap != ''){
+															$nama='Nama Pengguna: '.$data_pengguna->nama_lengkap;
+														}else{
+															$nama='Username: '.$username;
+														}
+														?>
+														<option value="<?php echo $user_id;?>"><?php echo $nama;?></option>
+														<?php
+													}
+													
+												}
+											}
+											
+										?>
+										</optgroup>
+										<?php
+									}?>
+								</select>									
                                 </p>
-								<?php if(isset($data_pengguna)){
-									$nama=$data_pengguna->nama_lengkap;
-									$email=$data_pengguna->email;
-								}else{
-									$nama='';
-									$email='';
-								}
+								
+								<?php
+									$user_id=$this->session->getValue('user_id');			
+									$nama_and_email=$this->user->view_nama_email($user_id);
+									if($nama_and_email){
+										$nama=$nama_and_email->nama_lengkap;
+										$email=$nama_and_email->email;
+									}else{
+										$nama='';
+										$email='';
+										
+									}
 								?>
 								
 								<input name="pengirim" type="hidden" id="name" value="<?php echo $this->session->getValue('user_id');?>" readonly>
+								<input name="posisi_form" type="hidden" id="name" value="luar" readonly>
 								<p>
                                     <input name="nama" type="text" id="name" placeholder="Your Name" value="<?php echo $nama;?>" required>
                                     

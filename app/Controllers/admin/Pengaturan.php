@@ -23,9 +23,9 @@ class Pengaturan extends Resources\Controller
 		$data['subtitle']= 'Pengaturan';
 		$data["page"]='pengaturan';
 		$data['konten']='admin/konten/pengaturan';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='pengaturan';		
 
         $this->output('admin/index', $data);
@@ -41,9 +41,9 @@ class Pengaturan extends Resources\Controller
 		$data['subtitle']= 'Pengaturan';
 		$data["page"]='slide';
 		$data['konten']='admin/konten/slide';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='slide';
 		$data['viewall_slide']=$this->pengaturan->viewall_slide();
 		
@@ -127,9 +127,9 @@ class Pengaturan extends Resources\Controller
 		$data['subtitle']= 'Pengaturan';
 		$data["page"]='slide';
 		$data['konten']='admin/konten/slide';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='slide';
 		$data['viewall_slide']=$this->pengaturan->viewall_slide();
 		
@@ -145,9 +145,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='about';
 			$this->output('admin/index', $data);
 		}
@@ -244,9 +244,9 @@ class Pengaturan extends Resources\Controller
 		$data['subtitle']= 'Pengaturan';
 		$data["page"]='slide';
 		$data['konten']='admin/konten/slide';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='slide';
 		$data['viewall_slide']=$this->pengaturan->viewall_slide();
 		
@@ -262,9 +262,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='about';
 			$this->output('admin/index', $data);
 		}
@@ -284,9 +284,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Pengaturan';
 			$data["page"]='slide';
 			$data['konten']='admin/konten/slide';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='slide';
 			$data['viewall_slide']=$this->pengaturan->viewall_slide();
 			
@@ -321,9 +321,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Pengaturan';
 			$data["page"]='slide';
 			$data['konten']='admin/konten/slide';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='slide';
 			$data['viewall_slide']=$this->pengaturan->viewall_slide();
 		
@@ -342,9 +342,9 @@ class Pengaturan extends Resources\Controller
 		$data['subtitle']= 'Pengaturan';
 		$data["page"]='header';
 		$data['konten']='admin/konten/header';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='header';
 		$data['viewall_header']=$this->pengaturan->viewall_header();
 	
@@ -412,9 +412,9 @@ class Pengaturan extends Resources\Controller
 		$data['subtitle']= 'Pengaturan';
 		$data["page"]='header';
 		$data['konten']='admin/konten/header';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='header';
 		$data['viewall_header']=$this->pengaturan->viewall_header();
 	
@@ -430,9 +430,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='header';
 			$this->output('admin/index', $data);
 		}
@@ -515,9 +515,9 @@ class Pengaturan extends Resources\Controller
 		$data['subtitle']= 'Pengaturan';
 		$data["page"]='header';
 		$data['konten']='admin/konten/header';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='header';
 		$data['viewall_header']=$this->pengaturan->viewall_header();
 	
@@ -533,9 +533,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='about';
 			$this->output('admin/index', $data);
 		}
@@ -575,9 +575,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Pengaturan';
 			$data["page"]='header';
 			$data['konten']='admin/konten/header';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='header';
 			$data['viewall_header']=$this->pengaturan->viewall_header();
 			$this->output('admin/index', $data);
@@ -592,9 +592,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Pengaturan';
 			$data["page"]='header';
 			$data['konten']='admin/konten/header';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='header';
 			$data['viewall_header']=$this->pengaturan->viewall_header();
 		
@@ -633,9 +633,9 @@ class Pengaturan extends Resources\Controller
 		$data['title'] = 'Data Partner';
 		$data['subtitle']= 'List data Partner';
 		$data['konten']='admin/konten/partner';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='partner';
 		$data['page']='partner';
 		
@@ -736,9 +736,9 @@ class Pengaturan extends Resources\Controller
 		$data['title'] = 'Data Partner';
 		$data['subtitle']= 'List data Partner';
 		$data['konten']='admin/konten/partner';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='partner';
 		$data['page']='partner';
 		
@@ -758,9 +758,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='partner';
 			
 			$this->output('admin/index', $data);
@@ -873,9 +873,9 @@ class Pengaturan extends Resources\Controller
 		$data['title'] = 'Data Partner';
 		$data['subtitle']= 'List data Partner';
 		$data['konten']='admin/konten/partner';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='partner';
 		$data['page']='partner';
 		
@@ -893,9 +893,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='partner';
 			
 			$this->output('admin/index', $data);	
@@ -944,9 +944,9 @@ class Pengaturan extends Resources\Controller
 			$data['title'] = 'Data Partner';
 			$data['subtitle']= 'List data Partner';
 			$data['konten']='admin/konten/partner';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='partner';
 			$data['page']='partner';
 			
@@ -969,9 +969,9 @@ class Pengaturan extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='partner';
 			
 			$this->output('admin/index', $data);

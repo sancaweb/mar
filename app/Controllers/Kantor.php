@@ -21,10 +21,7 @@ class Kantor extends Resources\Controller
 	
 	public function index($page=1)
     {        
-		if($this->session->getValue('user_id')){
-				$user_id=$this->session->getValue('user_id');			
-				$data['data_pengguna']=$this->user->view_nama_email($user_id);			
-		}
+		
 		//pagination
 		$this->pagination = new Resources\Pagination();
         $page = (int) $page;
@@ -50,6 +47,7 @@ class Kantor extends Resources\Controller
 		$data['page']='contact';
 		$data['konten']='konten/contact';
 		$data['menu']='profile';
+		$data['data_user_grup']=$this->user->viewall_admin_sadmin();
 		//wajib
 		$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();
 		$data['menu_kategori_haji']=$this->produk->viewall_produk_haji();			

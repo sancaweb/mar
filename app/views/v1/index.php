@@ -6,7 +6,7 @@
 <?php $this->output(TEMPLATE.'top_menu');?>
 
 <!-- /.flexslider -->
-	<?php if($page=='home'){         
+	<?php if($page=='home'){
 		 $this->output(TEMPLATE.'slider');
 	}else{
 		?>
@@ -71,15 +71,28 @@
 		<script src="<?php echo $this->uri->baseUri.STYLE;?>lightbox/js/lightbox.min.js" type="text/javascript"></script>	
 	
 		<script>
-			$('#pembayaran').on('keyup', "input[id^='pembayaran']", function() {
-			$("input[id^='pembayaran']").priceFormat({
-				prefix: "",
-				thousandsSeparator: ",",
-				centsLimit: 0
-			});
-			});
-			</script>
-        <!-- templatemo 409 travel --> 
-		
+		$('#pembayaran').on('keyup', "input[id^='pembayaran']", function() {
+		$("input[id^='pembayaran']").priceFormat({
+			prefix: "",
+			thousandsSeparator: ",",
+			centsLimit: 0
+		});
+		});
+		</script>
+		<?php if(isset($page)){
+			if($page=='inbox' || $page=='sentitems' || $page == 'contact'){
+				?>
+				<script src="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/js/chosen.jquery.min.js" type="text/javascript"></script>
+				  <script src="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/js/prism.js" type="text/javascript" charset="utf-8"></script>
+				  <script type="text/javascript">
+				  $("#dropdown-ajax").chosen({
+					no_results_text: "Oops, nothing found!",
+					width: "100%"
+				  });
+				  </script>
+				<?php
+			}
+		} //END ISSET $PAGE
+		?>
     </body>
 </html>

@@ -28,10 +28,10 @@ class Pesan extends Resources\Controller
         $page = (int) $page;
         $limit = 10;
 		
-		$kepada=$this->session->getValue('user_id');
-		$data['data_pesan']=$this->pesan->viewall_pesan_page_by_kepada($page, $limit,$kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['data_pesan']=$this->pesan->viewall_pesan_page_by_penerima($page, $limit,$penerima);
 	
-		$total_pesan=$this->pesan->hitung_pesan_by_kepada($kepada);
+		$total_pesan=$this->pesan->hitung_pesan_by_penerima($penerima);
 		
 		
 		$data['total_pesan'] = $total_pesan;
@@ -50,11 +50,12 @@ class Pesan extends Resources\Controller
 		$data['title'] = 'Data Pesan Inbox';
 		$data['subtitle']= 'List data Pesan';
 		$data['konten']='konten/user';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='pesan';
 		$data['page']='inbox';
+		$data['data_user_grup']=$this->user->viewall_admin_sadmin();
 		//wajib
 		$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();
 		$data['menu_kategori_haji']=$this->produk->viewall_produk_haji();			
@@ -99,11 +100,12 @@ class Pesan extends Resources\Controller
 		$data['title'] = 'Data Pesan Terkirim';
 		$data['subtitle']= 'List data Pesan Terkirim';
 		$data['konten']='konten/user';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='pesan';
 		$data['page']='sentitems';
+		$data['data_user_grup']=$this->user->viewall_admin_sadmin();
 		//wajib
 		$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();
 		$data['menu_kategori_haji']=$this->produk->viewall_produk_haji();			
@@ -157,9 +159,9 @@ class Pesan extends Resources\Controller
 			$data['konten']='konten/user';
 			$data['menu']='pesan';
 			$data['page']='view_pesan';
-			$kepada=$this->session->getValue('user_id');
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
 			//wajib
 			$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();
 			$data['menu_kategori_haji']=$this->produk->viewall_produk_haji();			
@@ -181,7 +183,7 @@ class Pesan extends Resources\Controller
     {
 		if($this->session->getValue('username')){
         if($_POST){
-			$kepada=$this->request->post('kepada');
+			$penerima=$this->request->post('penerima');
 			$id_pesan=$this->request->post('id_pesan');
 			$pengirim=$this->request->post('pengirim');
 			$nama=$this->request->post('nama');
@@ -193,7 +195,7 @@ class Pesan extends Resources\Controller
 			$data_pesan=array(
 				'id_pesan'=>$id_pesan,
 				'pengirim'=>$pengirim,
-				'kepada'=>$kepada,
+				'penerima'=>$penerima,
 				'nama'=>$nama,
 				'email'=>$email,
 				'subjek'=>$subjek,
@@ -230,9 +232,9 @@ class Pesan extends Resources\Controller
 			$data['konten']='konten/user';
 			$data['menu']='pesan';
 			$data['page']='view_pesan';
-			$kepada=$this->session->getValue('user_id');
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);			
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);			
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
 			//wajib
 			$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();
 			$data['menu_kategori_haji']=$this->produk->viewall_produk_haji();			
@@ -260,18 +262,20 @@ class Pesan extends Resources\Controller
     {
 		$page=1;
         if($_POST){
-			$kepada=$this->request->post('kepada');	
+			$penerima=$this->request->post('penerima');	
 			$nama=$this->request->post('nama');	
 			$pengirim=$this->request->post('pengirim');	
 			$email=$this->request->post('email');
 			$subjek=$this->request->post('subjek');
 			$isi_pesan=$this->request->post('isi_pesan');
+			$posisi_form=$this->request->post('posisi_form');
 			$id_pesan='#'.$this->randomstring->randomstring(4).'-'.base64_encode(date('Ymd'));
 			
-			$data_pesan=array(
+			foreach($penerima as $penerima){
+				$data_pesan=array(
 				'id_pesan'=>$id_pesan,
 				'pengirim'=>$pengirim,
-				'kepada'=>$kepada,
+				'penerima'=>$penerima,
 				'nama'=>$nama,
 				'email'=>$email,
 				'subjek'=>$subjek,
@@ -279,19 +283,8 @@ class Pesan extends Resources\Controller
 				'tgl_input'=>date('Y-m-d'),				
 			);
 			$this->pesan->input_pesan($data_pesan);
+			}
 			
-			$data['alert']='
-			<div class="alert alert-success alert-dismissable">
-				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-				<h4><i class="icon fa fa-check"></i> Terkirim ...</h4>
-				<p>Terimakasih, Pesan anda telah terkirim. </p>
-			</div>
-			';
-			$data['title'] = 'Our Office';
-			$data['subtitle']= 'Halaman utama';
-			$data['page']='contact';
-			$data['konten']='konten/contact';
-			$data['menu']='profile';
 			//wajib
 			$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();
 			$data['menu_kategori_haji']=$this->produk->viewall_produk_haji();			
@@ -300,28 +293,86 @@ class Pesan extends Resources\Controller
 			$data['list_partner']=$this->pengaturan->viewall_partner();
 			//end wajib
 			
-			//pagination
-			$this->pagination = new Resources\Pagination();
-			$page = (int) $page;
-			$limit = 5;
-			$total_kantor=$this->kantor->hitung_kantor();
+			if($posisi_form == 'dalam'){
+				//pagination
+				$this->pagination = new Resources\Pagination();
+				$page = (int) $page;
+				$limit = 10;
+				
+				$pengirim=$this->session->getValue('user_id');
+				$data['data_sentitems']=$this->pesan->viewall_pesan_page_by_pengirim($page, $limit,$pengirim);
 			
-					
-			$data['viewall_kantor_page']=$this->kantor->viewall_kantor_page($page, $limit);
-			$data['total_kantor'] = $total_kantor;
-			$data['pageLinks'] = $this->pagination->setOption(
-			array(
-				'limit' => $limit,
-				'base' => $this->uri->baseUri.'index.php/kantor/index/%#%/',
-				'total' => $total_kantor,	
-				'current' => $page,
-				)
-						)->getUrl(); 
+				$total_pesan_sentitems=$this->pesan->hitung_pesan_by_pengirim($pengirim);
+				
+				
+				$data['total_pesan_sentitems'] = $total_pesan_sentitems;
+				$data['pageLinks'] = $this->pagination->setOption(
+				array(
+					'limit' => $limit,
+					'base' => $this->uri->baseUri.'index.php/pesan/sentitems/%#%/',
+					'total' => $total_pesan_sentitems,	
+					'current' => $page,
+					)
+							)->getUrl(); 
+				
+				$data['no'] = ($page * $this->pagination->limit) - $this->pagination->limit;
+				// end pagination
+				
+				$data['title'] = 'Data Pesan Terkirim';
+				$data['subtitle']= 'List data Pesan Terkirim';
+				$data['konten']='konten/user';
+				$penerima=$this->session->getValue('user_id');
+				$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+				$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
+				$data['menu']='pesan';
+				$data['page']='sentitems';
+				$data['data_user_grup']=$this->user->viewall_admin_sadmin();
+				 $data['alert']='
+					<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<h4><i class="icon fa fa-check"></i> Terkirim ...</h4>
+						<p>Terimakasih, Pesan anda telah terkirim. </p>
+					</div>
+					';
+				$this->output(TEMPLATE.'index', $data);
+			}else{
+				//pagination
+				$this->pagination = new Resources\Pagination();
+				$page = (int) $page;
+				$limit = 5;
+				$total_kantor=$this->kantor->hitung_kantor();
+				
+						
+				$data['viewall_kantor_page']=$this->kantor->viewall_kantor_page($page, $limit);
+				$data['total_kantor'] = $total_kantor;
+				$data['pageLinks'] = $this->pagination->setOption(
+				array(
+					'limit' => $limit,
+					'base' => $this->uri->baseUri.'index.php/kantor/index/%#%/',
+					'total' => $total_kantor,	
+					'current' => $page,
+					)
+							)->getUrl(); 
+				
+				$data['no'] = ($page * $this->pagination->limit) - $this->pagination->limit;
+				// end pagination
+				$data['title'] = 'Our Office';
+				$data['subtitle']= 'Halaman utama';
+				$data['page']='contact';
+				$data['konten']='konten/contact';
+				$data['menu']='profile';
+				$data['data_user_grup']=$this->user->viewall_admin_sadmin();
+				$data['alert']='
+					<div class="alert alert-success alert-dismissable">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+						<h4><i class="icon fa fa-check"></i> Terkirim ...</h4>
+						<p>Terimakasih, Pesan anda telah terkirim. </p>
+					</div>
+					';
+				
+				$this->output(TEMPLATE.'index', $data);
+			}
 			
-			$data['no'] = ($page * $this->pagination->limit) - $this->pagination->limit;
-			// end pagination
-			
-			$this->output(TEMPLATE.'index', $data);
 		}else{
 			$this->redirect('kantor');
 		}

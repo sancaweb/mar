@@ -18,24 +18,85 @@
 		<h4 class="modal-title" id="myModalLabel">Kirim Pesan Baru</h4>
 	  </div>
 	  <div class="modal-body">
-		  <form id="form_kabar" data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/admin/kabar/pro_input_kabar">
+		  <form id="form_kabar" data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/pesan/kirim_pesan">
 			<div class="row" style="border-bottom:2px solid #B8B8B8; border-top:2px solid #B8B8B8; margin-bottom:10px;border-bottom-right-radius: 15em 1em; border-bottom-left-radius: 1em 3em;border-top-left-radius: 1em 3em; border-top-right-radius: 1em 3em;">
 			
 			
-			<div class="col-md-6 ">				
+			<div class="col-md-12 ">
 			<div class="form-group">
 			  <label>Penerima</label>
 			  <div class="input-group col-xs-12">
-			  <select class="form-control" name="kepada" required>
-			  <option value=''>tidak ada data. Input Kategori dulu</option>
-			  <option value=''>tidak ada data. Input Kategori dulu</option>
-			  <option value=''>tidak ada data. Input Kategori dulu</option>
-			  </select>
+				<select data-placeholder="Penerima Pesan bisa lebih dari satu. Ketik untuk mencari pengirim secara otomatis." style="width:350px;" multiple id="dropdown-ajax" class="form-control chosen-select" name="penerima[]" required>
+					
+					<?php foreach($data_user_grup as $data_user_grup){						
+						?>
+						<optgroup class="optionGroup" label="User Level : <?php echo $data_user_grup->ket;?>">
+						<?php $user_level=$data_user_grup->level;
+							$data_user=$this->user->viewall_username_and_id($user_level);
+							if($data_user){
+								foreach($data_user as $data_user){				
+									$user_id=$data_user->id;
+									$username=$data_user->username;
+									$data_pengguna=$this->user->view_nama_lengkap($user_id);
+									if($this->session->getValue('user_id') == $user_id){
+										
+									}else{
+										
+										if($data_pengguna->nama_lengkap != ''){
+											$nama='Nama Pengguna: '.$data_pengguna->nama_lengkap;
+										}else{
+											$nama='Username: '.$username;
+										}
+										?>
+										<option value="<?php echo $user_id;?>"><?php echo $nama;?></option>
+										<?php
+									}
+									
+								}
+							}
+							
+						?>
+						</optgroup>
+						<?php
+					}?>
+				</select>
+			  
 			</div>
 			  </div><!-- /.input group -->
 			</div>
+			<?php
+				$user_id=$this->session->getValue('user_id');			
+				$nama_and_email=$this->user->view_nama_email($user_id);
+				if($nama_and_email){
+					$nama=$nama_and_email->nama_lengkap;
+					$email=$nama_and_email->email;
+				}else{
+					$nama='';
+					$email='';
+					
+				}
+			?>
+			<input name="pengirim" type="hidden" id="name" value="<?php echo $this->session->getValue('user_id');?>" readonly>
+			<input name="posisi_form" type="hidden" id="name" value="dalam" readonly>
+			<div class="col-md-6">					
+			<div class="form-group">
+			  <label>Nama:</label>
+			  <div class="input-group col-xs-12">
+			  <input name="nama" type="text" class="form-control" value="<?php echo $nama;?>" required>
+			  </div>
+			</div>				  
+			</div>
 			
 			<div class="col-md-6">					
+			<div class="form-group">
+			  <label>Email:</label>
+			  <div class="input-group col-xs-12">
+			  <input name="email" type="text" class="form-control" value="<?php echo $email;?>" required>
+			  </div>
+			</div>				  
+			</div>
+			
+			<div class="col-md-12">					
 			<div class="form-group">
 			  <label>Subjek:</label>
 			  <div class="input-group col-xs-12">

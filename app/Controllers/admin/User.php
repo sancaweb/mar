@@ -13,6 +13,7 @@ class User extends Resources\Controller
 		$this->request=new Resources\Request;
 		$this->upload=new Resources\Upload;
 		$this->user=new Models\User;
+		$this->readmore = new Libraries\Readmore;
     }
 	
 	public function index($page=1)
@@ -55,9 +56,9 @@ class User extends Resources\Controller
 		$data['menu']='user';
 		$data['page']='user';
 		$data['user_level']=$this->user->viewall_user_grup();
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		
         $this->output('admin/index', $data);
 		}else{
@@ -184,9 +185,9 @@ class User extends Resources\Controller
 		$data['menu']='user';
 		$data['page']='user';
 		$data['user_level']=$this->user->viewall_user_grup();
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		
         $this->output('admin/index', $data);
 		
@@ -196,9 +197,9 @@ class User extends Resources\Controller
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
 			$data['menu']='error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			
 			$data['alert']='
 				<div class="alert alert-danger alert-dismissable">
@@ -360,9 +361,9 @@ class User extends Resources\Controller
 		$data['menu']='user';
 		$data['page']='user';
 		$data['user_level']=$this->user->viewall_user_grup();
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		
         $this->output('admin/index', $data);
 		}else{
@@ -370,9 +371,9 @@ class User extends Resources\Controller
 			$data['subtitle']= 'error';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';			
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='error';
 			
 			$data['alert']='
@@ -399,9 +400,9 @@ class User extends Resources\Controller
 			$data['subtitle']= 'error';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='error';
 			
 			$data['alert']='
@@ -457,9 +458,9 @@ class User extends Resources\Controller
 			$data['menu']='user';
 			$data['page']='user';
 			$data['user_level']=$this->user->viewall_user_grup();
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['alert']='
 				<div class="alert alert-success alert-dismissable">
 				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

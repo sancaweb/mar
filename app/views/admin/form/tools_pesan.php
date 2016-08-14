@@ -29,7 +29,7 @@
 			<div class="form-group">
 			  <label>Penerima</label>
 			  <div class="input-group col-xs-12">			   
-			  <select data-placeholder="Penerima Pesan bisa lebih dari satu. Ketik untuk mencari pengirim secara otomatis." style="width:350px;" multiple id="dropdown-ajax" class="form-control chosen-select" name="kepada[]" required>
+			  <select data-placeholder="Penerima Pesan bisa lebih dari satu. Ketik untuk mencari pengirim secara otomatis." style="width:350px;" multiple id="dropdown-ajax" class="form-control chosen-select" name="penerima[]" required>
 					
 					<?php foreach($data_user_grup as $data_user_grup){						
 						?>
@@ -145,8 +145,8 @@
 		  <div class="form-group">
 			<select name="berdasarkan" class="form-control" required>
 				<option value="">Cari Berdasarkan </option>
-				<option value="id_rekanan">ID Rekanan</option>
-				<option value="no_voucher">No Voucher</option>
+				<option value="id_pesan">ID Rekanan</option>
+				<option value="pengirim">No Voucher</option>
 				<option value="rekanan.nama_rekanan">Nama Rekanan</option>
 				<option value="nama_penerima">Nama Penerima</option>
 				<option value="username">Username</option>
@@ -179,12 +179,12 @@
 	  <div class="modal-body">
 	  <div class="row" >
 		<div class="col-md-6">
-		<a class="btn btn-app btn-flat" href="<?php echo $this->uri->baseUri;?>index.php/admin/excel/penerima_voucher">
-		<i class="fa fa-file-excel-o"></i> Export All Data To Excel
+		<a class="btn btn-app btn-flat" href="<?php echo $this->uri->baseUri;?>index.php/admin/excel/pesan/<?php echo $page;?>">
+		<i class="fa fa-file-excel-o"></i> Export All Data <?php echo $page;?>
 		</a>
 		</div>
-		<div class="col-md-6">
 		
+		<div class="col-md-6">		
 		<div class="input-group">
 		  <button class="btn btn-default pull-right" id="daterange-btn">
 			<i class="fa fa-calendar"></i> Berdasarkan Rentang Waktu
@@ -197,8 +197,8 @@
 		<div class="row">
 		<div class="col-md-12">
 		
-		<form class="form-inline" method="post" data-toggle="validator" enctype="multipart/form-data" role="form" action="<?php echo $this->uri->baseUri;?>index.php/admin/excel/penerima_voucher">
-		  
+		<form class="form-inline" method="post" data-toggle="validator" enctype="multipart/form-data" role="form" action="<?php echo $this->uri->baseUri;?>index.php/admin/excel/pesan">
+			<input type="hidden" name="page" class="form-control" value="<?php echo $page;?>" readonly>
 			  <div class="form-group">
 				<label class="sr-only" for="dari_tgl">Dari</label>
 				<input type="text" name="dari_tgl" class="form-control" id="dari_tgl" readonly>

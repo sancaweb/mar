@@ -46,9 +46,9 @@ class Kabar extends Resources\Controller
 		$data['title'] = 'Data kabar';
 		$data['subtitle']= 'List data kabar';
 		$data['konten']='admin/konten/kabar';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='kabar';
 		$data['page']='kabar';
 		$data['kategori']=$kategori;
@@ -102,9 +102,9 @@ class Kabar extends Resources\Controller
 		$data['title'] = 'Data Kabar';
 		$data['subtitle']= 'List data kabar';
 		$data['konten']='admin/konten/kabar';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='kabar';
 		$data['page']='kabar';
 		$data['alert']='
@@ -128,9 +128,9 @@ class Kabar extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='about';
 			$this->output('admin/index', $data);
 		}
@@ -191,9 +191,9 @@ class Kabar extends Resources\Controller
 			$data['title'] = 'Data kabar';
 			$data['subtitle']= 'List data kabar';
 			$data['konten']='admin/konten/kabar';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='kabar';
 			$data['page']='kabar';
 			
@@ -210,9 +210,9 @@ class Kabar extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='about';
 			$this->output('admin/index', $data);
 		}
@@ -264,9 +264,9 @@ class Kabar extends Resources\Controller
 			$data['title'] = 'Data kabar';
 			$data['subtitle']= 'List data kabar';
 			$data['konten']='admin/konten/kabar';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='kabar';
 			$data['page']='kabar';
 			
@@ -307,9 +307,9 @@ class Kabar extends Resources\Controller
 		$data['title'] = 'Data Kategori';
 		$data['subtitle']= 'List data kategori';
 		$data['konten']='admin/konten/kategori_kabar';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='kategori_kabar';
 		$data['page']='kategori';
 		
@@ -358,9 +358,9 @@ class Kabar extends Resources\Controller
 		$data['title'] = 'Data Kategori';
 		$data['subtitle']= 'List data kategori';
 		$data['konten']='admin/konten/kategori_kabar';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='kategori_kabar';
 		$data['page']='kategori';
 		$data['alert']='
@@ -384,9 +384,9 @@ class Kabar extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='about';
 			$this->output('admin/index', $data);
 		}
@@ -442,9 +442,9 @@ class Kabar extends Resources\Controller
 		$data['title'] = 'Data kategori';
 		$data['subtitle']= 'List data kategori';
 		$data['konten']='admin/konten/kategori_kabar';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='kategori_kabar';
 		$data['page']='kategori';
 		
@@ -461,9 +461,9 @@ class Kabar extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='kategori_kabar';
 			$this->output('admin/index', $data);
 		}
@@ -508,9 +508,9 @@ class Kabar extends Resources\Controller
 			$data['title'] = 'Data kategori';
 			$data['subtitle']= 'List data kategori';
 			$data['konten']='admin/konten/kategori';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='kategori_kabar';
 			$data['page']='kategori';
 			
@@ -527,9 +527,9 @@ class Kabar extends Resources\Controller
 			$data['subtitle']= 'Halaman utama';
 			$data["page"]='error';
 			$data['konten']='admin/konten/error';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='kategori_kabar';
 			$this->output('admin/index', $data);
 		}

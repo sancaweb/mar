@@ -54,8 +54,8 @@ class Registrasi extends Resources\Controller
 		$data['subtitle']= 'Halaman utama';
 		$data["page"]='registrasi';
 		$data['konten']='konten/user';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
 		$data['menu']='registrasi';
 		//wajib		
 		$data['menu_kategori_umroh']=$this->produk->viewall_produk_umroh();

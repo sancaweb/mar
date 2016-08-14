@@ -40,4 +40,13 @@
 		background-position: center;
 	}
 	</style>
+	<?php if(isset($page)){
+		if($page=='inbox' || $page=='sentitems' || $page == 'contact'){
+	?>
+	<!-- dropdown ajax -->	
+  <link rel="stylesheet" href="<?php echo $this->uri->baseUri.ADM_STYLE;?>dist/css/chosen.min.css">
+  <?php
+		}
+	} //END ISSET $PAGE
+	?>
 	</head>

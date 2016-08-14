@@ -26,10 +26,10 @@ class Pesan extends Resources\Controller
         $page = (int) $page;
         $limit = 10;
 		
-		$kepada=$this->session->getValue('user_id');
-		$data['data_pesan']=$this->pesan->viewall_pesan_page_by_kepada($page, $limit,$kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['data_pesan']=$this->pesan->viewall_pesan_page_by_penerima($page, $limit,$penerima);
 	
-		$total_pesan=$this->pesan->hitung_pesan_by_kepada($kepada);
+		$total_pesan=$this->pesan->hitung_pesan_by_penerima($penerima);
 		
 		$data['total_pesan'] = $total_pesan;
 		$data['pageLinks'] = $this->pagination->setOption(
@@ -47,9 +47,9 @@ class Pesan extends Resources\Controller
 		$data['title'] = 'Data Pesan Inbox';
 		$data['subtitle']= 'List data Pesan';
 		$data['konten']='admin/konten/pesan';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['data_user_grup']=$this->user->viewall_level_and_ket();
 		$data['menu']='pesan';
 		$data['page']='inbox';
@@ -90,9 +90,9 @@ class Pesan extends Resources\Controller
 		$data['title'] = 'Data Pesan Terkirim';
 		$data['subtitle']= 'List data Pesan';
 		$data['konten']='admin/konten/pesan';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='pesan';
 		$data['page']='sentitems';
 		$data['data_user_grup']=$this->user->viewall_level_and_ket();
@@ -142,9 +142,9 @@ class Pesan extends Resources\Controller
 			$data['konten']='admin/konten/view_pesan';
 			$data['menu']='pesan';
 			$data['page']='pesan';
-			$kepada=$this->session->getValue('user_id');
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
 			$this->output('admin/index', $data);
 		}else{
 			$this->redirect('admin/pesan');
@@ -158,7 +158,7 @@ class Pesan extends Resources\Controller
     {
 		if($this->session->getValue('user_level')==1 || $this->session->getValue('user_level')==2 || $this->session->getValue('user_level')==3){
         if($_POST){
-			$kepada=$this->request->post('kepada');
+			$penerima=$this->request->post('penerima');
 			$id_pesan=$this->request->post('id_pesan');
 			$pengirim=$this->request->post('pengirim');
 			$nama=$this->request->post('nama');
@@ -170,7 +170,7 @@ class Pesan extends Resources\Controller
 			$data_pesan=array(
 				'id_pesan'=>$id_pesan,
 				'pengirim'=>$pengirim,
-				'kepada'=>$kepada,
+				'penerima'=>$penerima,
 				'nama'=>$nama,
 				'email'=>$email,
 				'subjek'=>$subjek,
@@ -207,9 +207,9 @@ class Pesan extends Resources\Controller
 			$data['konten']='admin/konten/view_pesan';
 			$data['menu']='pesan';
 			$data['page']='pesan';
-			$kepada=$this->session->getValue('user_id');
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);			
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);			
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
 			$this->output('admin/index', $data);
 		}else{
 			$this->redirect('admin/pesan');
@@ -229,7 +229,7 @@ class Pesan extends Resources\Controller
     {
 		if($this->session->getValue('user_level')==1 || $this->session->getValue('user_level')==2 || $this->session->getValue('user_level')==3){
         if($_POST){
-			$kepada=$this->request->post('kepada');			
+			$penerima=$this->request->post('penerima');			
 			$nama=$this->request->post('nama');	
 			$pengirim=$this->request->post('pengirim');	
 			$email=$this->request->post('email');
@@ -237,11 +237,11 @@ class Pesan extends Resources\Controller
 			$isi_pesan=$this->request->post('isi_pesan');
 			$id_pesan='#'.$this->randomstring->randomstring(4).'-'.base64_encode(date('Ymd'));
 			
-			foreach($kepada as $kepada){
+			foreach($penerima as $penerima){
 				$data_pesan=array(
 				'id_pesan'=>$id_pesan,
 				'pengirim'=>$pengirim,
-				'kepada'=>$kepada,
+				'penerima'=>$penerima,
 				'nama'=>$nama,
 				'email'=>$email,
 				'subjek'=>$subjek,
@@ -287,9 +287,9 @@ class Pesan extends Resources\Controller
 			$data['title'] = 'Data Pesan Terkirim';
 			$data['subtitle']= 'List data Pesan';
 			$data['konten']='admin/konten/pesan';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-			$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+			$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 			$data['menu']='pesan';
 			$data['page']='sentitems';
 			$data['data_user_grup']=$this->user->viewall_level_and_ket();

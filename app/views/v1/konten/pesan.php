@@ -1,7 +1,4 @@
-<?php if(isset($alert)){
-	echo $alert;
-}
-?>
+
 <div class="row">
 	<div class="col-md-12">
 	  <div class="box">
@@ -166,15 +163,15 @@
 						
 						foreach($data_sentitems as $data_sentitems){
 							$no++;
-							$kepada=$data_sentitems->kepada;
-							if($kepada==0){
+							$penerima=$data_sentitems->penerima;
+							if($penerima==0){
 								$nama_penerima='Guest';
 							}else{
-								$nama_pengguna=$this->user->view_nama_lengkap($kepada);
-								$cek_user_level_by_userid=$this->user->cek_user_level_by_userid($kepada)->user_level;
+								$nama_pengguna=$this->user->view_nama_lengkap($penerima);
+								$cek_user_level_by_userid=$this->user->cek_user_level_by_userid($penerima)->user_level;
 								$user_level=$this->user->ambil_user_level($cek_user_level_by_userid)->ket;
 								if($nama_pengguna->nama_lengkap==''){								
-									$nama_penerima=$this->user->ambil_username($kepada)->username.' ('.$user_level.' )';
+									$nama_penerima=$this->user->ambil_username($penerima)->username.' ('.$user_level.' )';
 								}else{
 									$nama_penerima=$nama_pengguna->nama_lengkap.' ('.$user_level.' )';
 								}

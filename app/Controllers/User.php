@@ -29,8 +29,8 @@ class User extends Resources\Controller
 			$data['subtitle']= 'User Profile';
 			$data["page"]='user';
 			$data['konten']='konten/user';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
 			$data['menu']='user';
 			//user_tab
 			$user_id=$this->session->getValue('user_id');			
@@ -87,6 +87,8 @@ class User extends Resources\Controller
 	
 	public function edit_user()
     {
+		
+		if($this->session->getValue('username')){
 		if($_POST){
 		$username=$this->request->post('username');
 		$password=$this->request->post('password');
@@ -191,8 +193,8 @@ class User extends Resources\Controller
 			$data['subtitle']= 'User Profile';
 			$data["page"]='user';
 			$data['konten']='konten/user';
-			$kepada=$this->session->getValue('user_id');
-			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
+			$penerima=$this->session->getValue('user_id');
+			$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
 			$data['menu']='user';
 			//user_tab
 			$user_id=$this->session->getValue('user_id');
@@ -254,6 +256,9 @@ class User extends Resources\Controller
 				';
 			
 			$this->output(TEMPLATE.'index', $data);
+		}
+		}else{
+			$this->redirect('login');
 		}
     }
 	

@@ -26,9 +26,10 @@ class Home extends Resources\Controller
         $data['title'] = 'Admin Dashboard';
 		$data['subtitle']= 'Halaman utama';
 		$data['konten']='admin/konten/home';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$data['page']='home';
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='home';
 		$date=date("Y-m-d");
 		//list user
@@ -54,4 +55,15 @@ class Home extends Resources\Controller
 			$this->redirect('login');
 		}
     }
+	
+	public function tes(){
+		$penerima=25;
+		$nama_penerima=$this->user->view_nama_lengkap($penerima);
+		if($nama_penerima->nama_lengkap !=''){
+			echo $nama_penerima->nama_lengkap;
+		}else{
+			echo $this->user->ambil_username($penerima)->username;
+		}
+	}
+	
 }

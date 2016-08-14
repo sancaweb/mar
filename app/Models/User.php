@@ -80,9 +80,12 @@ class User {
 	//user grup
 	
 	public function viewall_level_and_ket(){
-		return $this->db->results("SELECT level,ket FROM user_grup");
+		return $this->db->results("SELECT level,ket FROM user_grup ORDER BY level asc");
 	}
 	
+	public function viewall_admin_sadmin(){
+		return $this->db->results("SELECT level,ket FROM user_grup WHERE level=1 OR level=2 ORDER BY level asc");
+	}
 	public function ambil_user_level($cek_user_level){
 		return $this->db->row("SELECT level,ket FROM user_grup WHERE level='".$cek_user_level."' ");
 	}

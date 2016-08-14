@@ -58,9 +58,9 @@ class Pembayaran extends Resources\Controller
 		$data['subtitle']= 'Halaman utama';
 		$data["page"]='pembayaran';
 		$data['konten']='admin/konten/pembayaran';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='pembayaran';
 
         $this->output('admin/index', $data);
@@ -129,9 +129,9 @@ class Pembayaran extends Resources\Controller
 		$data['subtitle']= 'Halaman utama';
 		$data["page"]='pembayaran';
 		$data['konten']='admin/konten/error';
-		$kepada=$this->session->getValue('user_id');
-		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_kepada($kepada);
-		$data['loader_pesan']=$this->pesan->viewall_pesan_by_kepada($kepada);
+		$penerima=$this->session->getValue('user_id');
+		$data['total_pesan_belum_terbaca']=$this->pesan->hitung_pesan_status_by_penerima($penerima);
+		$data['loader_pesan']=$this->pesan->viewall_pesan_by_penerima($penerima);
 		$data['menu']='pembayaran';
 		$this->output('admin/index', $data);
 		}else{

@@ -94,7 +94,7 @@
   <form id="form_penerima_voucher" data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="<?php echo $this->uri->baseUri;?>index.php/pesan/balas_pesan">
 	<input name="id_pesan" class="form-control" value="<?php echo $id_pesan;?>" type="hidden">
 	<input name="pengirim" class="form-control" value="<?php echo $this->session->getValue('user_id');?>" type="hidden">
-	<input name="kepada" class="form-control" value="<?php echo $data_balas_pesan->pengirim;?>" type="hidden">
+	<input name="penerima" class="form-control" value="<?php echo $data_balas_pesan->pengirim;?>" type="hidden">
 	<input name="nama" class="form-control" value="<?php echo $nama;?>" type="hidden">
 	<input name="email" class="form-control" value="<?php echo $email;?>" type="hidden">
 	<input name="subjek" class="form-control" value="<?php echo $data_balas_pesan->subjek;?>" type="hidden">

@@ -13,12 +13,13 @@
   </li>
   <li role="presentation" class="dropdown <?php if(isset($page)){if($page=='inbox' || $page=='sentitems' || $page=='view_pesan'){echo 'active';}}?>">
     <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-      Pesan <span data-toggle="tooltip" title="<?php echo $total_pesan_belum_terbaca;?> Pesan Belum dibaca" class="badge"><?php echo $total_pesan_belum_terbaca;?>&nbsp;<i class="fa fa-envelope-o"></i></span><span class="caret"></span>
+      Pesan <span data-toggle="tooltip" title="<?php echo $total_pesan_belum_terbaca;?> Pesan Belum dibaca" class="badge"><?php echo $total_pesan_belum_terbaca;?>&nbsp;<i class="fa fa-envelope-o"></i></span>
+	  <span class="caret"></span>
     </a>
     <ul class="dropdown-menu ">
       <li role="presentation" <?php if(isset($page)){if($page=='inbox'){echo 'class="active"';}}?>>
 		<a href="<?php echo $this->uri->baseUri;?>index.php/pesan">Inbox
-		
+		<span data-toggle="tooltip" title="<?php echo $total_pesan_belum_terbaca;?> Pesan Belum dibaca" class="badge"><?php echo $total_pesan_belum_terbaca;?>&nbsp;<i class="fa fa-envelope-o"></i></span>
 		</a>
 		  
 	  </li>

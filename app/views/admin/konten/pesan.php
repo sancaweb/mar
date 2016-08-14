@@ -181,13 +181,13 @@
 						
 						foreach($data_sentitems as $data_sentitems){
 							$no++;
-							$kepada=$data_sentitems->kepada;
-							if($kepada==0){
+							$penerima=$data_sentitems->penerima;
+							if($penerima==0){
 								$nama_penerima='Guest';
 							}else{
-								$nama_pengguna=$this->user->view_nama_lengkap($kepada);
+								$nama_pengguna=$this->user->view_nama_lengkap($penerima);
 								if($nama_pengguna->nama_lengkap==''){								
-									$nama_penerima=$this->user->ambil_username($kepada)->username;
+									$nama_penerima=$this->user->ambil_username($penerima)->username;
 								}else{
 									$nama_penerima=$nama_pengguna->nama_lengkap;
 								}
