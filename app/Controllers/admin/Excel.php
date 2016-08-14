@@ -331,11 +331,6 @@ class Excel extends Resources\Controller
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (0,3,'Data Tidak ada');
 					}
 			}
-			
-			
-			
-
-		
 		}else{
 			//not POST
 			$page=$page;			
