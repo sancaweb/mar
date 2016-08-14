@@ -235,9 +235,10 @@ class Excel extends Resources\Controller
 							->setCellValue('A1', 'Data Pesan Inbox :')
 							->setCellValue('A2', 'No')
 							->setCellValue('B2', 'Pengirim')
-							->setCellValue('B3', 'Email Pengirim')
-							->setCellValue('B4', 'Subjek')
-							->setCellValue('B5', 'Tgl Terkirim');
+							->setCellValue('C2', 'Email Pengirim')
+							->setCellValue('D2', 'Subjek')
+							->setCellValue('E2', 'Isi Pesan')
+							->setCellValue('F2', 'Tgl Terkirim');
 							
 							
 				//Miscellaneous glyphs, UTF-8		
@@ -250,17 +251,21 @@ class Excel extends Resources\Controller
 					foreach($data_pesan as $data){
 						$pengirim=$data->pengirim;
 						$nama_pengirim=$this->user->view_nama_lengkap($pengirim);
-						if($nama_pengirim->nama_lengkap != ''){
-							$nama_pengirim=$nama_pengirim->nama_lengkap;
+						if($nama_pengirim){
+							if($nama_pengirim->nama_lengkap != ''){
+								$nama_pengirim=$nama_pengirim->nama_lengkap;
+							}else{
+								$nama_pengirim=$this->user->ambil_username($pengirim)->username;
+							}
 						}else{
-							$nama_pengirim=$this->user->ambil_username($pengirim)->username;
-						}
-												
+							$nama_pengirim='GUEST';
+						}						
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k,$b,$no);
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+1,$b,$nama_pengirim);
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+2,$b,$data->email);
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+3,$b,$data->subjek);
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+4,$b,$data->tgl_input);
+						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+4,$b,$data->isi_pesan);
+						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+5,$b,$data->tgl_input);
 						
 						$no++;
 						$b++;
@@ -283,14 +288,15 @@ class Excel extends Resources\Controller
 				}
 				$worksheet='Data Terkirim '.$work_excel;
 				
-				$namaFile=$this->randomstring->randomstring(5).'-Terkirim-'.$work_excel.'.xlsx';
+				$namaFile=$this->randomstring->randomstring(5).'-Pesan Terkirim-'.$work_excel.'.xlsx';
 				// Add some data
 				$objPHPExcel->setActiveSheetIndex(0)
 							->setCellValue('A1', 'Data Pesan Terkirim :')
 							->setCellValue('A2', 'No')
 							->setCellValue('B2', 'Penerima')
 							->setCellValue('C2', 'Subjek')
-							->setCellValue('D2', 'Tgl Terkirim');
+							->setCellValue('D2', 'Isi Pesan')
+							->setCellValue('E2', 'Tgl Terkirim');
 							
 							
 				//Miscellaneous glyphs, UTF-8		
@@ -303,23 +309,27 @@ class Excel extends Resources\Controller
 					foreach($data_pesan as $data){
 						$penerima=$data->penerima;
 						$nama_penerima=$this->user->view_nama_lengkap($penerima);
+						if($nama_penerima){
 						if($nama_penerima->nama_lengkap != ''){
 							$nama_penerima=$nama_penerima->nama_lengkap;
 						}else{
 							$nama_penerima=$this->user->ambil_username($pengirim)->username;
 						}
-												
+						}else{
+							$nama_penerima='GUEST';
+						}					
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k,$b,$no);
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+1,$b,$nama_penerima);
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+2,$b,$data->subjek);
-						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+3,$b,$data->tgl_input);
+						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+3,$b,$data->isi_pesan);
+						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow ($k+4,$b,$data->tgl_input);
 						
 						$no++;
 						$b++;
 					}//end foreach
 					}else{
 						$objPHPExcel->getActiveSheet()->setCellValueByColumnAndRow (0,3,'Data Tidak ada');
-					}	
+					}
 			}
 			
 			
