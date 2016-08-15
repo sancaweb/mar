@@ -131,10 +131,6 @@ class Excel extends Resources\Controller
 				
 				$namaFile=$this->randomstring->randomstring(5).'-all_Data-Admin.xlsx';
 			}
-			
-			
-			
-			
 		}
         //Miscellaneous glyphs, UTF-8
 		
@@ -451,10 +447,7 @@ class Excel extends Resources\Controller
 				$this->redirect('index.php/admin/pesan');
 			}
 			
-		}
-		
-        
-                    
+		}         
 
         // Rename worksheet
         $objPHPExcel->getActiveSheet()->setTitle($worksheet);
