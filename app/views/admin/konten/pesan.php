@@ -46,6 +46,7 @@
 				<table class="table table-bordered table-hover">
 				<tr>
 				  <th >No</th>
+				  <th >ID Pesan</th>
 				  <th >Pengirim</th>
 				  <th >Email</th>
 				  <th >Subjek</th>
@@ -76,6 +77,7 @@
 					?>
 						<tr>
 						<td><?php echo $no;?></td>
+						<td><?php echo $data->id_pesan;?></td>
 						<td><?php echo $nama_pengirim;?></td>
 						<td><?php echo $data->email;?></td>
 						<td><?php echo $data->subjek;?></td>
@@ -165,6 +167,7 @@
 				<table class="table table-bordered table-hover">
 				<tr>
 				  <th >No</th>
+				  <th >ID Pesan</th>
 				  <th >Penerima</th>
 				  <th >Email</th>
 				  <th >Subjek</th>
@@ -195,6 +198,7 @@
 					?>
 						<tr>
 						<td><?php echo $no;?></td>
+						<td><?php echo $data_sentitems->id_pesan;?></td>
 						<td><?php echo $nama_penerima;?></td>
 						<td><?php echo $data_sentitems->email;?></td>
 						<td><?php echo $data_sentitems->subjek;?></td>

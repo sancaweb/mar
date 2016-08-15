@@ -145,7 +145,7 @@
 		  <div class="form-group">
 			<select name="berdasarkan" class="form-control" required>
 				<option value="">Cari Berdasarkan </option>
-				<option value="id_pesan">ID Rekanan</option>
+				<option value="id_pesan">ID Pesan</option>
 				<option value="pengirim">No Voucher</option>
 				<option value="rekanan.nama_rekanan">Nama Rekanan</option>
 				<option value="nama_penerima">Nama Penerima</option>
