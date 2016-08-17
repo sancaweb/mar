@@ -44,7 +44,21 @@
 		  <?php
 	  }
   }else{
-	  
+	  ?>
+	  <li class="item">
+		  <div class="product-img">
+			<img src="<?php echo $this->uri->baseUri;?>upload/user/blank.png" alt="Product Image">
+		  </div>
+		  <div class="product-info">
+			<a target="_blank" href="#" class="product-title">
+			Tidak ada data
+			<span class="label label-success pull-right"> </span></a>
+			<span class="product-description">
+			Data tidak ada
+			</span>
+		  </div>
+		</li><!-- /.item -->
+	  <?php
   }?>
   
   </ul>

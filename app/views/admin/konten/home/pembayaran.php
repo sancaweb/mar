@@ -68,7 +68,6 @@
   </div><!-- /.table-responsive -->
 </div><!-- /.box-body -->
 <div class="box-footer clearfix">
-  <a href="" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-  <a href="" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+  <a href="" class="btn btn-sm btn-info btn-flat pull-right"><i class="fa fa-money"></i>&nbsp;View All Pembayaran</a>
 </div><!-- /.box-footer -->
 </div><!-- /.box -->

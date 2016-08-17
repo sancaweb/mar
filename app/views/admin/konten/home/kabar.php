@@ -58,6 +58,6 @@
 </div><!-- /.box-body -->
 <div class="box-footer text-center">
   <a href="<?php echo $this->uri->baseUri;?>index.php/admin/kabar" class="btn btn-sm btn-info btn-flat">
-  <i class="fa fa-file-text"></i>&nbsp;View Kabar</a>
+  <i class="fa fa-file-text"></i>&nbsp;View All Kabar</a>
 </div><!-- /.box-footer -->
 </div><!-- /.box -->
