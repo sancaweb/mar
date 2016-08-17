@@ -261,9 +261,4 @@ class User extends Resources\Controller
 			$this->redirect('login');
 		}
     }
-	
-	
-	
-	
-	
 }
