@@ -42,6 +42,7 @@
 
             <div class="col-md-4">
               <!-- PRODUCT LIST -->
+			  <?php $this->output('admin/konten/home/penerima_voucher');?>
 			  <?php $this->output('admin/konten/home/produk');?>
               <!-- /.box -->
             </div><!-- /.col -->

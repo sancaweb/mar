@@ -20,8 +20,8 @@ class User {
 	public function hapus_user($id){
 		return $this->db->delete('user',array('id'=>$id));		
 	}
-	public function user_terbaru($date){
-		return $this->db->getVar("SELECT count(id) FROM user WHERE tgl_register='".$date."'");
+	public function user_terbaru(){
+		return $this->db->getVar("SELECT count(id) FROM user WHERE tgl_register > DATE(now()) - INTERVAL 1 WEEK");
 	}
 	public function edit_user($data_user,$id){
 		return $this->db->update("user",$data_user,array('id'=>$id));

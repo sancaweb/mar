@@ -24,8 +24,8 @@ class Registrasi {
 		return $this->db->getVar("SELECT count(id) FROM registrasi");
 	}
 	
-	public function hitung_registrasi_by_date($date){
-		return $this->db->getVar("SELECT count(id) FROM registrasi WHERE tgl_register='".$date."'");
+	public function hitung_registrasi_by_date(){
+		return $this->db->getVar("SELECT count(id) FROM registrasi WHERE tgl_register > DATE(now()) - INTERVAL 1 WEEK");
 	}
 	
 	

@@ -84,6 +84,7 @@ class Voucher {
 		return $this->db->results("SELECT * FROM penerima_voucher ORDER BY id DESC");
 	}
 	
+	
 	public function penerima_voucher_by_user_id_log($user_id_log){
 		return $this->db->row("SELECT * FROM penerima_voucher WHERE user_id='".$user_id_log."' AND status='0'");
 	}
@@ -97,10 +98,31 @@ class Voucher {
 		return $this->db->results("SELECT * FROM penerima_voucher ORDER BY id DESC LIMIT $offset,$limit	");
 	}
 	
+	public function view_penerima_voucher_list($page = 1, $limit = 5){
+		$offset = ($limit * $page) - $limit;
+		return $this->db->results("SELECT * FROM penerima_voucher WHERE aktif=1 ORDER BY id DESC LIMIT $offset,$limit	");
+	}
+	
+	//hitung penerima voucher terbaru
+	public function penerima_voucher_terbaru(){
+		return $this->db->getVar("SELECT count(id) FROM penerima_voucher WHERE tgl_terima > DATE(now()) - INTERVAL 1 WEEK AND aktif=1");
+	}
+	
+	public function penerima_voucher_list_by_id_rekanan($id_rekanan,$page = 1, $limit = 5){
+		$offset = ($limit * $page) - $limit;
+		return $this->db->results("SELECT * FROM penerima_voucher WHERE id_rekanan='".$id_rekanan."' AND aktif=1 ORDER BY id DESC LIMIT $offset,$limit");
+	}
+	
 	public function view_penerima_voucher_by_id_rekanan($id_rekanan,$page = 1, $limit = 5){
 		$offset = ($limit * $page) - $limit;
 		return $this->db->results("SELECT * FROM penerima_voucher WHERE id_rekanan='".$id_rekanan."' ORDER BY id DESC LIMIT $offset,$limit");
 	}
+	
+	//hitung penerima voucher terbaru by id_rekanan
+	public function penerima_voucher_terbaru_by_id_rekanan($id_rekanan){
+		return $this->db->getVar("SELECT count(id) FROM penerima_voucher WHERE tgl_terima > DATE(now()) - INTERVAL 1 WEEK AND id_rekanan='".$id_rekanan."' AND aktif=1");
+	}
+	
 	
 	public function view_penerima_voucher_by_id_rekanan_nopage($id_rekanan){
 		return $this->db->results("SELECT * FROM penerima_voucher WHERE id_rekanan='".$id_rekanan."' ORDER BY id DESC");

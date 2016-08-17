@@ -23,8 +23,8 @@ class Pembayaran {
 	public function hitung_pembayaran(){
 		return $this->db->getVar("SELECT count(id) FROM pembayaran ");
 	}
-	public function hitung_pembayaran_by_date($date){
-		return $this->db->getVar("SELECT count(id) FROM pembayaran WHERE tgl_konfirm='".$date."'");
+	public function hitung_pembayaran_by_date(){
+		return $this->db->getVar("SELECT count(id) FROM pembayaran WHERE tgl_konfirm > DATE(now()) - INTERVAL 1 WEEK");
 	}
 	
 	public function input_pembayaran($data_pembayaran){

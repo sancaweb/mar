@@ -18,8 +18,8 @@ class Produk {
 		return $this->db->getVar("SELECT count(id) FROM produk");
 	}
 	
-	public function produk_terbaru($date){
-		return $this->db->getVar("SELECT count(id) FROM produk WHERE tgl_input='".$date."'");
+	public function produk_terbaru(){
+		return $this->db->getVar("SELECT count(id) FROM produk WHERE tgl_input > DATE(now()) - INTERVAL 1 WEEK");
 	}
 	
 	public function viewall_produk(){

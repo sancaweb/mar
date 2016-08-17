@@ -3,13 +3,13 @@
   <h3 class="box-title">Penerima Voucher</h3>
   <div class="box-tools pull-right">
   <?php 
-		if($produk_terbaru < 1){
+		if($penerima_voucher < 1){
 			?>
-			<span class="label label-warning"><?php echo $produk_terbaru;?> Kabar Baru Kosong</span>
+			<span class="label label-warning"><?php echo $penerima_voucher;?> Penerima Baru </span>
 			<?php
 		}else{
 			?>
-			<span class="label label-danger"><?php echo $produk_terbaru;?> Kabar Baru</span>
+			<span class="label label-danger"><?php echo $penerima_voucher;?> Penerima Baru</span>
 			<?php
 		}
 	  ?>
@@ -19,18 +19,25 @@
 </div><!-- /.box-header -->
 <div class="box-body">
   <ul class="products-list product-list-in-box">
-  <?php if($produk_list){
-	  foreach($produk_list as $produk_list){
+  <?php if($penerima_voucher_list){
+	  foreach($penerima_voucher_list as $penerima_voucher_list){
+		  $data_pengguna=$this->user->viewall_pengguna_by_user_id($penerima_voucher_list->user_id);
+			if($data_pengguna){
+				$foto=$data_pengguna->foto;
+			}else{
+				$foto='blank.png';
+			}
 		  ?>						  
 			<li class="item">
 			  <div class="product-img">
-				<img src="<?php echo $this->image->ambil_gambar($produk_list->keterangan);?>" alt="Product Image">
+				<img src="<?php echo $this->uri->baseUri;?>upload/user/<?php echo $foto;?>" alt="Product Image">
 			  </div>
 			  <div class="product-info">
-				<a target="_blank" href="<?php echo $this->uri->baseUri;?>index.php/produk/view/<?php echo $produk_list->id;?>/<?php echo $produk_list->nama_produk;?>" class="product-title"><?php echo $produk_list->nama_produk;?>
-				<span class="label label-info pull-right"><?php echo 'Rp. '.number_format($produk_list->harga,0,'','.');?></span></a>
+				<a target="_blank" href="#" class="product-title">
+				<?php echo $penerima_voucher_list->nama_penerima;?>
+				<span class="label label-success pull-right"> <?php echo date('d-M-y',strtotime($penerima_voucher_list->tgl_terima));?></span></a>
 				<span class="product-description">
-				  <?php echo $this->readmore->readmore($this->image->del_img($produk_list->keterangan),100);?>
+				<?php echo $penerima_voucher_list->alamat;?>
 				</span>
 			  </div>
 			</li><!-- /.item -->

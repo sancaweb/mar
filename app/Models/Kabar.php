@@ -18,8 +18,8 @@ class Kabar {
 		return $this->db->getVar("SELECT count(id) FROM kabar");
 	}
 	
-	public function kabar_terbaru($date){
-		return $this->db->getVar("SELECT count(id) FROM kabar WHERE tgl_input='".$date."'");
+	public function kabar_terbaru(){
+		return $this->db->getVar("SELECT count(id) FROM kabar WHERE tgl_input > DATE(now()) - INTERVAL 1 WEEK");
 	}
 	
 	public function viewall_kabar(){
