@@ -15,6 +15,8 @@ class Voucher extends Resources\Controller
 		$this->user=new Models\User;
 		$this->randomstring = new Libraries\Randomstring;
 		$this->readmore = new Libraries\Readmore;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
     }
 	
 	public function index($page=1)

@@ -49,4 +49,8 @@ class Pembayaran {
 	}
 	
 	
+	public function hitung_pembayaran_terbaru(){
+		return $this->db->getVar("SELECT count(id) FROM pembayaran WHERE tgl_konfirm > DATE(now()) - INTERVAL 1 WEEK");
+	}
+	
 }

@@ -54,7 +54,7 @@
 			
 			<li class="treeview <?php if($menu=='register' || $menu=='pembayaran' ){echo 'active';}?>" >
               <a href="#">
-                <i class="fa fa-share"></i> <span>Registrasi Online</span>
+                <i class="fa fa-share"></i> <span>Registrasi Umroh</span>
                 <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">

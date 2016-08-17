@@ -16,6 +16,8 @@ class About extends Resources\Controller
 		$this->request=new Resources\Request;
 		$this->readmore = new Libraries\Readmore;				
 		$this->upload = new Resources\Upload; 
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
     }
 	
 	public function index($page=1)

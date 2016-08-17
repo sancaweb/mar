@@ -16,6 +16,8 @@ class Kabar extends Resources\Controller
 		$this->randomstring = new Libraries\Randomstring;
 		$this->readmore = new Libraries\Readmore;
 		$this->image = new Libraries\Image;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
     }
 	
 	public function index($page=1)

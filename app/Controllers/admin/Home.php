@@ -41,6 +41,10 @@ class Home extends Resources\Controller
 		//produk		
 		$data['produk_list']=$this->produk->viewall_produk_page($page = 1, $limit = 4);
 		$data['produk_terbaru']=$this->produk->produk_terbaru($date);
+		
+		//penerima voucher		
+		$data['penerima_voucher_list']=$this->voucher->viewall_produk_page($page = 1, $limit = 4);
+		$data['penerima_voucher']=$this->voucher->produk_terbaru($date);
 		//registrasi		
 		$data['registrasi_list']=$this->registrasi->viewall_registrasi($page = 1, $limit = 5);
 		$data['registrasi_terbaru']=$this->registrasi->hitung_registrasi_by_date($date);
@@ -56,14 +60,5 @@ class Home extends Resources\Controller
 		}
     }
 	
-	public function tes(){
-		$penerima=25;
-		$nama_penerima=$this->user->view_nama_lengkap($penerima);
-		if($nama_penerima->nama_lengkap !=''){
-			echo $nama_penerima->nama_lengkap;
-		}else{
-			echo $this->user->ambil_username($penerima)->username;
-		}
-	}
 	
 }

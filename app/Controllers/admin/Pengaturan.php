@@ -13,7 +13,10 @@ class Pengaturan extends Resources\Controller
 		$this->randomstring = new Libraries\Randomstring;
 		$this->pengaturan = new Models\Pengaturan;				
 		$this->pesan = new Models\Pesan;				
-		$this->upload = new Resources\Upload; 
+		$this->user = new Models\User;				
+		$this->upload = new Resources\Upload;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
     }
 	
 	public function index()
@@ -607,7 +610,7 @@ class Pengaturan extends Resources\Controller
 	
 	//PARTNER
 	public function partner($page=1){
-		if($this->session->getValue('user_level')==1 || $this->session->getValue('user_level')){
+		if($this->session->getValue('user_level')==1 || $this->session->getValue('user_level')==2){
 		
 		 //pagination
 		$this->pagination = new Resources\Pagination();

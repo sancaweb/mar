@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width">
 		<meta name="author" content="sanca.web.id">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800,700,600,300' rel='stylesheet' type='text/css'>
-        
+        <link rel="shortcut icon" href="<?php echo $this->uri->baseUri;?>favi.png" title="Favicon" />	
         <link rel="stylesheet" href="<?php echo $this->uri->baseUri.STYLE;?>css/bootstrap.min.css">
         <link rel="stylesheet" href="<?php echo $this->uri->baseUri.STYLE;?>css/font-awesome.css">
         <link rel="stylesheet" href="<?php echo $this->uri->baseUri.STYLE;?>css/animate.css">

@@ -15,6 +15,8 @@ class Pesan extends Resources\Controller
 		$this->readmore = new Libraries\Readmore;
 		$this->request = new Resources\Request;
 		$this->randomstring = new Libraries\Randomstring;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
 		
     }
 	

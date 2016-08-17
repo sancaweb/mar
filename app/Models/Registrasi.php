@@ -75,4 +75,8 @@ class Registrasi {
 	public function view_id_rekanan_by_id_register($id_register){
 		return $this->db->row("SELECT id_rekanan FROM registrasi WHERE id_register='".$id_register."'");
 	}
+	
+	public function hitung_register_terbaru(){
+		return $this->db->getVar("SELECT count(id) FROM registrasi WHERE tgl_register > DATE(now()) - INTERVAL 1 WEEK");
+	}
 }

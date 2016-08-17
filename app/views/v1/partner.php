@@ -7,7 +7,7 @@
 						<div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="partner-item">
 						<a href="<?php echo $list_partner->url;?>" target="_blank">
-                            <img class="img-thumbnail" style="width:142px;" src="<?php echo $this->uri->baseUri;?>upload/partner/<?php echo $list_partner->image;?>" alt="">
+                            <img class="img-thumbnail" style="width:142px;" src="<?php echo $this->uri->baseUri;?>upload/partner/<?php echo $list_partner->image;?>" alt="<?php echo $list_partner->nama_partner;?>" title="<?php echo $list_partner->nama_partner;?>">
                         </a>
 						</div> <!-- /.partner-item -->
 						</div> <!-- /.col-md-2 -->
@@ -17,7 +17,7 @@
 					?>
 					<div class="col-md-2 col-sm-4 col-xs-6">
                         <div class="partner-item">
-                            <img src="<?php echo $this->uri->baseUri;?>upload/partner/blank.jpg" alt="">
+                            <img src="<?php echo $this->uri->baseUri;?>upload/partner/blank.jpg" alt="Gambar tidak ditemukan">
                         </div> <!-- /.partner-item -->
                     </div> <!-- /.col-md-2 -->
 					<?php

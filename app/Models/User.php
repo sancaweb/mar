@@ -44,10 +44,12 @@ class User {
 		return $this->db->results("SELECT * FROM user ORDER BY id DESC LIMIT $offset,$limit	");
 	}
 	
+	
 	public function viewall_page_by_id($id,$page = 1, $limit = 5){
 		$offset = ($limit * $page) - $limit;
-		return $this->db->results("SELECT * FROM user WHERE id='".$id."' ORDER BY id DESC LIMIT $offset,$limit	");
+		return $this->db->results("SELECT * FROM user WHERE id='".$id."' ORDER BY id DESC LIMIT $offset,$limit");
 	}
+	
 	
 	public function cek_user($username,$password){
 		return $this->db->row("SELECT * FROM user WHERE username='".$username."' AND password='".$password."'");
@@ -75,6 +77,11 @@ class User {
 	
 	public function viewall_username_and_id($user_level){
 		return $this->db->results("SELECT username,id FROM user WHERE user_level='".$user_level."' ORDER BY id DESC");
+	}
+	
+	
+	public function hitung_user_terbaru(){
+		return $this->db->getVar("SELECT count(id) FROM user WHERE tgl_register > DATE(now()) - INTERVAL 1 WEEK");
 	}
 	
 	//user grup

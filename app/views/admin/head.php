@@ -24,7 +24,7 @@
                   <span class="label label-success"><?php echo $total_pesan_belum_terbaca;?></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li class="header">You have <?php echo $total_pesan_belum_terbaca;?> new messages</li>
+                  <li class="header">Ada <?php echo $total_pesan_belum_terbaca;?> Pesan yang belum terbaca</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
                     <ul class="menu">
@@ -82,116 +82,46 @@
                 </ul>
               </li>
               <!-- Notifications: style can be found in dropdown.less -->
+			  <?php
+					$registrasi_terbaru=$this->registrasi->hitung_register_terbaru();
+					$pembayaran_terbaru=$this->pembayaran->hitung_pembayaran_terbaru();
+					$user_terbaru=$this->user->hitung_user_terbaru();
+					
+					$total_all=$registrasi_terbaru + $pembayaran_terbaru + $user_terbaru;
+				?>
               <li class="dropdown notifications-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="fa fa-bell-o"></i>
-                  <span class="label label-warning">10</span>
+                  <span class="label label-warning"><?php echo $total_all;?></span>
                 </a>
                 <ul class="dropdown-menu">
-                  <li class="header">You have 10 notifications</li>
+				
+                  <li class="header">You have <?php echo $total_all;?> notifications</li>
                   <li>
                     <!-- inner menu: contains the actual data -->
+					
                     <ul class="menu">
                       <li>
                         <a href="#">
-                          <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                          <i class="fa fa-users text-aqua"></i> <?php echo $registrasi_terbaru;?> Registrasi Umroh Baru Minggu Ini
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
+                          <i class="fa fa-shopping-cart text-green"></i> <?php echo $pembayaran_terbaru;?> Konfirmasi Pembayaran Minggu Ini
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <i class="fa fa-users text-red"></i> 5 new members joined
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#">
-                          <i class="fa fa-user text-red"></i> You changed your username
+                          <i class="fa fa-user-plus text-red"></i> <?php echo $user_terbaru;?> Members baru Minggu Ini
                         </a>
                       </li>
                     </ul>
                   </li>
-                  <li class="footer"><a href="#">View all</a></li>
+                  <li class="footer"><a >Klik task to view All data</a></li>
                 </ul>
               </li>
               <!-- Tasks: style can be found in dropdown.less -->
-              <li class="dropdown tasks-menu">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-flag-o"></i>
-                  <span class="label label-danger">9</span>
-                </a>
-                <ul class="dropdown-menu">
-                  <li class="header">You have 9 tasks</li>
-                  <li>
-                    <!-- inner menu: contains the actual data -->
-                    <ul class="menu">
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Design some buttons
-                            <small class="pull-right">20%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">20% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Create a nice theme
-                            <small class="pull-right">40%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">40% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Some task I need to do
-                            <small class="pull-right">60%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">60% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                      <li><!-- Task item -->
-                        <a href="#">
-                          <h3>
-                            Make beautiful transitions
-                            <small class="pull-right">80%</small>
-                          </h3>
-                          <div class="progress xs">
-                            <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                              <span class="sr-only">80% Complete</span>
-                            </div>
-                          </div>
-                        </a>
-                      </li><!-- end task item -->
-                    </ul>
-                  </li>
-                  <li class="footer">
-                    <a href="#">View all tasks</a>
-                  </li>
-                </ul>
-              </li>
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -230,7 +160,7 @@
                       <small><?php echo $this->session->getValue('username');?></small>
                     </p>
                   </li>
-                  <!-- Menu Body -->
+                  <!-- Menu Body 
                   <li class="user-body">
                     <div class="col-xs-4 text-center">
                       <a href="#">Followers</a>
@@ -242,10 +172,10 @@
                       <a href="#">Friends</a>
                     </div>
                   </li>
-                  <!-- Menu Footer-->
+                  Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profile</a>
+                      <a data-toggle="modal" data-target="#myModalviewprofile" class="btn btn-default btn-flat">Profile</a>
                     </div>
                     <div class="pull-right">
                       <a href="<?php echo $this->uri->baseUri;?>index.php/login/logout" class="btn btn-default btn-flat">Sign out</a>
@@ -259,6 +189,117 @@
               </li>
             </ul>
           </div>
-
+		  
         </nav>
       </header>
+	  <!-- Modal View-->
+			  <?php
+				$user_head=$this->user->view_by_id($this->session->getValue('user_id'));
+				$cek_user_level=$this->user->cek_user_level($user_head->username,$user_head->password)->user_level;
+				$ambil_user_level=$this->user->ambil_user_level($cek_user_level)->ket;
+				$pengguna_head=$this->user->viewall_pengguna_by_user_id($user_head->id);
+				if($pengguna_head){
+					$nama_pengguna=$pengguna_head->nama_lengkap;
+					$no_tlp=$pengguna_head->no_tlp;
+					$email=$pengguna_head->email;
+					$alamat=$pengguna_head->alamat;						
+					$foto=$pengguna_head->foto;
+				}else{
+					$nama_pengguna='';
+					$no_tlp='';
+					$email='';
+					$alamat='';						
+					$foto='';
+				}
+			  ?>
+			<div class="modal fade bs-example-modal-lg" id="myModalviewprofile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">View User <?php echo $nama_pengguna;?> dengan username: <?php echo $user_head->username;?></h4>
+				  </div>
+				  <div class="modal-body">
+					<!--FORM View-->
+					<form data-toggle="validator" enctype="multipart/form-data" role="form" method="POST" action="#">
+					<div class="row" style="border-bottom:2px solid #B8B8B8; border-top:2px solid #B8B8B8; margin-bottom:10px;border-bottom-right-radius: 15em 1em; border-bottom-left-radius: 1em 3em;border-top-left-radius: 1em 3em; border-top-right-radius: 1em 3em;">
+					
+						<div class="form-group">	
+						  <label class="col-sm-2 control-label">Username:</label>
+						  <div class="col-sm-10" >
+						  <input type="text" class="form-control" value="<?php echo $user_head->username;?>" readonly >
+						  </div>			  
+						</div>
+						
+						<div class="form-group">	
+						  <label class="col-sm-2 control-label">Password:</label>
+						  <div class="col-sm-10" >
+						  <input type="text" class="form-control" value="xxxxx" readonly>
+						  </div>			  
+						</div>
+						
+						
+						<div class="form-group">	
+						  <label class="col-sm-2 control-label">User Level:</label>
+						  <div class="col-sm-10" >							  
+						  <input type="text" class="form-control" value="<?php echo $ambil_user_level;?>" readonly>							  
+						  </div>			  
+						</div>	
+						
+					</div>
+					<div class="row" style="border-bottom:2px solid #B8B8B8; border-top:2px solid #B8B8B8; margin-bottom:10px;border-bottom-right-radius: 15em 1em; border-bottom-left-radius: 1em 3em;border-top-left-radius: 1em 3em; border-top-right-radius: 1em 3em;">
+						
+						<div class="form-group">
+						  <label class="col-sm-2 control-label">Foto:</label>
+						  <div class="col-sm-10" >
+						  <?php if($foto){
+							  ?>
+							  <img class="img-responsive" src="<?php echo $this->uri->baseUri;?>upload/user/<?php echo $foto;?>" style="width:200px; height:200px;">
+							
+							<?php
+						  }else{
+							  ?>
+							  <img class="img-responsive" src="<?php echo $this->uri->baseUri;?>upload/user/blank.png">
+							
+							  <?php
+						  }?>
+						  </div>			  
+						</div>
+						
+						<div class="form-group">	
+						  <label class="col-sm-2 control-label">Nama Lengkap:</label>
+						  <div class="col-sm-10" >
+						  <input type="text" class="form-control" value="<?php echo $nama_pengguna;?>" readonly >
+						  </div>			  
+						</div>
+						
+						<div class="form-group">	
+						  <label class="col-sm-2 control-label">No Telpon:</label>
+						  <div class="col-sm-10" >
+						  <input type="text" class="form-control" value="<?php echo $no_tlp;?>" readonly >
+						  </div>			  
+						</div>
+						<div class="form-group">	
+						  <label class="col-sm-2 control-label">Email:</label>
+						  <div class="col-sm-10" >
+						  <input type="text" class="form-control" value="<?php echo $email;?>" readonly >
+						  </div>			  
+						</div>
+						<div class="form-group">	
+						  <label class="col-sm-2 control-label">Alamat:</label>
+						  <div class="col-sm-10" >
+						  <textarea type="text" class="form-control" readonly ><?php echo $alamat;?></textarea>
+						  </div>			  
+						</div>
+					
+					</div>
+				  <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  </div>
+					</form>
+					<!-- end form View-->
+				  </div>
+				</div>
+			  </div>
+			</div>
+			<!-- END Modal View-->

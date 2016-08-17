@@ -16,6 +16,8 @@ class Produk extends Resources\Controller
 		$this->readmore = new Libraries\Readmore;
 		$this->image = new Libraries\Image;
 		$this->user= new Models\User;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
     }
 	
 	public function index($page=1)

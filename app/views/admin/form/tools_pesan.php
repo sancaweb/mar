@@ -4,7 +4,7 @@
 		<i class="fa fa-file-excel-o"></i> Export To Excel
 		</a>
 				
-		<a class="btn btn-danger btn-flat" data-toggle="modal" data-target="#myModalSearch">
+		<a class="btn btn-danger btn-flat disabled" data-toggle="modal" data-target="#myModalSearch">
 		<i class="fa fa-search"></i> Search
 		</a>		
 		<a class="btn btn-primary btn-flat disabled" href="#">
@@ -146,8 +146,8 @@
 			<select name="berdasarkan" class="form-control" required>
 				<option value="">Cari Berdasarkan </option>
 				<option value="id_pesan">ID Pesan</option>
-				<option value="pengirim">No Voucher</option>
-				<option value="rekanan.nama_rekanan">Nama Rekanan</option>
+				<option value="pengirim">Pengirim</option>
+				<option value="penerima">Penerima</option>
 				<option value="nama_penerima">Nama Penerima</option>
 				<option value="username">Username</option>
 				

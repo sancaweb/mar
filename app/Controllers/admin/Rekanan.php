@@ -12,7 +12,9 @@ class Rekanan extends Resources\Controller
 		$this->user = new Models\User;
 		$this->pesan = new Models\Pesan;
 		$this->request=new Resources\Request;
-		$this->rekanan=new Models\rekanan;
+		$this->rekanan=new Models\Rekanan;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
 		$this->randomstring = new Libraries\Randomstring;
 		$this->readmore = new Libraries\Readmore;
 		

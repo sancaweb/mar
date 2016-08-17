@@ -14,6 +14,8 @@ class User extends Resources\Controller
 		$this->upload=new Resources\Upload;
 		$this->user=new Models\User;
 		$this->readmore = new Libraries\Readmore;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
     }
 	
 	public function index($page=1)

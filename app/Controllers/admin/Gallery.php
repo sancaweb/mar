@@ -18,6 +18,8 @@ class Gallery extends Resources\Controller
 		$this->image = new Libraries\Image;		
 		$this->upload = new Resources\Upload; 
 		$this->image = new Resources\Image; 
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
     }
 	
 	public function index($page=1)

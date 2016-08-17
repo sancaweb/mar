@@ -17,6 +17,8 @@ class Excel extends Resources\Controller
 		$this->pesan=new Models\Pesan;
 		$this->readmore = new Libraries\Readmore;
 		$this->randomstring = new Libraries\Randomstring;
+		$this->pembayaran=new Models\Pembayaran;
+		$this->registrasi=new Models\Registrasi;
 		Resources\Import::composer();
     }
 	
