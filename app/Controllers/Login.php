@@ -63,9 +63,9 @@ class Login extends Resources\Controller
 			$this->session->setValue($session);
 			
 			if($cek_user_level==1 || $cek_user_level==2 || $cek_user_level==3){
-				$this->redirect('admin/home');
+				$this->redirect('index.php/admin/home');
 			}else{
-				$this->redirect('home');
+				$this->redirect('index.php/home');
 			}
 			
 			
