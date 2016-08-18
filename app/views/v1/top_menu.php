@@ -126,6 +126,9 @@
 										<li>
 										<a href="<?php echo $this->uri->baseUri;?>index.php/admin"><i class="fa fa-hand-o-right" ></i>&nbsp;Administration Panel</a>
 										</li>
+										<li>
+										<a href="<?php echo $this->uri->baseUri;?>index.php/login/logout"><i class="fa fa-hand-o-right" ></i>&nbsp;Logout</a>
+										</li>
 										<?php
 									}else{
 										?>
