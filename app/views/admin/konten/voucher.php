@@ -34,9 +34,10 @@
 				$no=$no;
 				foreach($viewall_voucher as $data){
 					$no++;
-					$nama_rekanan= $this->rekanan->view_nama_rekanan_by_id($data->id_rekanan)->nama_rekanan;					
+					$nama_rekanan=$this->rekanan->view_nama_rekanan_by_id($data->id_rekanan)->nama_rekanan;
+					$jenis_rekanan=$this->rekanan->jenis_rekanan($data->id_rekanan)->jenis;							
+					
 					$aktif_voucher=$this->voucher->aktif_voucher($data->id);
-					$jenis_rekanan=$this->rekanan->jenis_rekanan($data->id_rekanan)->jenis;
 					$jumlah_penerima=$this->voucher->hitung_penerima_by_id_voucher($data->id);
 				?>
 				

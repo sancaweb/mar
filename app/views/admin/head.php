@@ -127,7 +127,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<?php
 				  $foto=$this->user->view_foto($this->session->getValue('user_id'));
-					if($foto->foto){
+					if($foto){
 						?>
 						<img src="<?php echo $this->uri->baseUri;?>upload/user/<?php echo $foto->foto;?>" class="user-image" alt="User Image">
 						<?php
@@ -136,15 +136,21 @@
 						<img src="<?php echo $this->uri->baseUri;?>upload/user/blank.png" class="user-image" alt="User Image">
 						<?php
 					}
+					$nama_lengkap=$this->user->view_nama_lengkap($this->session->getValue('user_id'));
+					if($nama_lengkap){
+						$nama_lengkap=$nama_lengkap->nama_lengkap;
+					}else{
+						$nama_lengkap='Nama Tidak ada';
+					}
 				  ?>
-                  <span class="hidden-xs"><?php echo $this->user->view_nama_lengkap($this->session->getValue('user_id'))->nama_lengkap;?></span>
+                  <span class="hidden-xs"><?php echo $nama_lengkap;?></span>
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
 				  <?php
 				  $foto=$this->user->view_foto($this->session->getValue('user_id'));
-					if($foto->foto){
+					if($foto){
 						?>
 						<img src="<?php echo $this->uri->baseUri;?>upload/user/<?php echo $foto->foto;?>" class="img-circle" alt="User Image">
 						<?php
@@ -156,7 +162,8 @@
 				  ?>
                     
                     <p>
-                      <?php echo $this->user->view_nama_lengkap($this->session->getValue('user_id'))->nama_lengkap;?>
+					
+                      <?php echo $nama_lengkap;?>
                       <small><?php echo $this->session->getValue('username');?></small>
                     </p>
                   </li>

@@ -6,7 +6,7 @@
             <div class="pull-left image">
 			<?php
 				  $foto=$this->user->view_foto($this->session->getValue('user_id'));
-					if($foto->foto){
+					if($foto){
 						?>
 						<img src="<?php echo $this->uri->baseUri;?>upload/user/<?php echo $foto->foto;?>" class="img-circle" alt="User Image">
 						<?php
@@ -18,7 +18,14 @@
 				  ?>
             </div>
             <div class="pull-left info">
-              <p><?php echo $this->user->view_nama_lengkap($this->session->getValue('user_id'))->nama_lengkap;?></p>
+              <p><?php 
+				$nama_lengkap=$this->user->view_nama_lengkap($this->session->getValue('user_id'));
+				if($nama_lengkap){
+					$nama_lengkap=$nama_lengkap->nama_lengkap;
+				}else{
+					$nama_lengkap='Nama Lengkap Tidak ada';
+				}
+			  echo $nama_lengkap;?></p>
               <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
           </div>
