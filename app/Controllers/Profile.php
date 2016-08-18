@@ -11,7 +11,7 @@ class Profile extends Resources\Controller
 		$this->home = new Models\Home;
 		$this->produk = new Models\Produk;
 		$this->kabar = new Models\Kabar;
-		$this->profile = new Models\profile;		
+		$this->profile = new Models\Profile;		
 		$this->image = new Libraries\Image;
 		$this->readmore = new Libraries\Readmore;
 		$this->pengaturan = new Models\Pengaturan;
