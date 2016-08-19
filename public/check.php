@@ -1,6 +1,6 @@
 <?php
 /**
- * Panada Installation Check
+ * sancaweb Installation Check
  *
  * Checking all minimum requirements
  *
@@ -10,11 +10,11 @@
 
 define('INDEX_FILE', basename(__FILE__));
 define('APP', dirname(__FILE__) . '/../app/');
-define('GEAR', dirname(__DIR__).'/panada/');
+define('GEAR', dirname(__DIR__).'/sancaweb/');
 define('DS', DIRECTORY_SEPARATOR);
 define('THISPATH', dirname(__FILE__));
 require_once APP . DS . 'config/main.php';
-//require_once THISPATH . DS . '../panada' . DS . 'variable' . DS . 'version.php';
+//require_once THISPATH . DS . '../sancaweb' . DS . 'variable' . DS . 'version.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -103,8 +103,8 @@ require_once APP . DS . 'config/main.php';
                 System Directory
             </td>
 
-            <?php if (is_dir(THISPATH . DS . '../panada') AND is_file(THISPATH . DS . '../panada' . DS . 'Gear.php')): ?>
-                <td><span class="monospace"><?php echo THISPATH . DS . 'panada' ?></span></td>
+            <?php if (is_dir(THISPATH . DS . '../sancaweb') AND is_file(THISPATH . DS . '../sancaweb' . DS . 'Gear.php')): ?>
+                <td><span class="monospace"><?php echo THISPATH . DS . 'sancaweb' ?></span></td>
                 <td><span class="pass">PASS</span></td>
             <?php else: $failed = TRUE ?>
                 <td>&nbsp;</td>

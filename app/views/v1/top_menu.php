@@ -104,10 +104,10 @@
 								</a>
 								<ul class="dropdown-menu">
 									<li>
-										<a href="<?php echo $this->uri->baseUri;?>profile"><i class="fa fa-hand-o-right" ></i>&nbsp;Profile</a>
+										<a href="<?php echo $this->uri->baseUri;?>index.php/profile"><i class="fa fa-hand-o-right" ></i>&nbsp;Profile</a>
 									</li>
 									<li>
-										<a href="<?php echo $this->uri->baseUri;?>kantor"><i class="fa fa-hand-o-right"></i>&nbsp;Contact Us</a>
+										<a href="<?php echo $this->uri->baseUri;?>index.php/kantor"><i class="fa fa-hand-o-right"></i>&nbsp;Contact Us</a>
 									</li>
 								</ul>
 							</li>
