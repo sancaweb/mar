@@ -80,7 +80,7 @@
 			<div class="form-group">
 			  <label>Potongan:</label>
 			  <div class="input-group col-xs-12" >
-			  <input type="hidden" name="potongan" class="form-control" value="<?php echo 'Rp. '.number_format($potongan->potongan,0,'','.');?>" readonly>
+			  <input type="text" name="potongan" class="form-control" value="<?php echo 'Rp. '.number_format($potongan->potongan,0,'','.');?>" readonly>
 			  <p class="help-block">Potongan Harga</p>
 			  </div>
 			</div>				  
